@@ -6,6 +6,9 @@
 - npm i react-responsive-carousel
 - npm i react-hook-form
 - npm install firebase
+- npm install -g firebase-tools
+- npm install aos --save
+- npm install axios
 - 
 
 ## Expanding the ESLint configuration
