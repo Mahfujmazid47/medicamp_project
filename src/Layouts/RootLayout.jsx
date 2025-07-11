@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { Outlet, useNavigation } from 'react-router';
 import Loading from '../Shared/Loading';
 import Navbar from '../Shared/Navbar';
+import Footer from '../Shared/Footer';
 
 const RootLayout = () => {
     const navigation = useNavigation();
@@ -19,7 +20,7 @@ const RootLayout = () => {
             </main>
 
             <footer>
-
+                <Footer></Footer>
             </footer>
         </>
     );

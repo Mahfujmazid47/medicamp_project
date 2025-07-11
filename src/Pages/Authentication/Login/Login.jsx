@@ -1,8 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import useAuth from '../../../Hooks/useAuth';
+import Swal from 'sweetalert2';
+import GoogleLogin from './GoogleLogin';
 
 const Login = () => {
+        const { signIn } = useAuth();
+    const navigate = useNavigate();
 
     const { register,
         handleSubmit,
@@ -12,7 +17,20 @@ const Login = () => {
     const onSubmit = data => {
         console.log(data);
         const { email, password } = data;
-        console.log(email, password)
+        signIn(email, password)
+            .then(result => {
+                console.log(result.user);
+                if (result.user) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Login Successful",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate('/')
+                }
+            })
     }
 
     return (
@@ -53,9 +71,9 @@ const Login = () => {
                             <span className='text-blue-500 font-semibold underline cursor-pointer text-sm'>Register</span>
                         </Link></p>
 
-                        {/* <div className='md:w-3/4'>
+                        <div className='md:w-3/4'>
                             <GoogleLogin></GoogleLogin>
-                        </div> */}
+                        </div>
                     </form>
                 </div>
             </div>

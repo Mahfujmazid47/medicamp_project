@@ -3,6 +3,7 @@ import SiteLogo from '../Shared/SiteLogo';
 import Loading from '../Shared/Loading';
 import { Outlet } from 'react-router';
 import Navbar from '../Shared/Navbar'
+import Footer from '../Shared/Footer';
 
 const AuthLayout = () => {
     return (
@@ -28,6 +29,9 @@ const AuthLayout = () => {
                 </figure>
             </div>
 
+            <footer>
+                <Footer></Footer>
+            </footer>
         </>
     );
 };

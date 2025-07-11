@@ -1,11 +1,13 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import useAuth from '../../../Hooks/useAuth';
+import Swal from 'sweetalert2';
+import GoogleRegister from './GoogleRegister';
 
 const Registration = () => {
     const { createUser, userProfileUpdate } = useAuth();
-    const [profilePic, setProfilePic] = useState(null);
+    const navigate = useNavigate();
 
     const { register,
         handleSubmit,
@@ -20,10 +22,19 @@ const Registration = () => {
             .then(async (result) => {
                 console.log(result.user);
 
+                Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Registration Successful",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate('/')
+
                 // update user info in firebase
                 const profileInfo = {
                     displayName: data.name,
-                    photoURL: profilePic,
+                    photoURL: data.photo,
                 }
                 userProfileUpdate(profileInfo)
                     .then(() => {
@@ -58,17 +69,6 @@ const Registration = () => {
             })
     }
 
-    const handleImageChange = async (e) => {
-        const image = e.target.files[0];
-        console.log(image)
-        const formData = new FormData();
-        formData.append('image', image)
-
-        const imageUploadUrl = `https://api.imgbb.com/1/upload?&key=${import.meta.env.VITE_image_upload_key}`;
-        const res = await axios.post(imageUploadUrl, formData);
-
-        setProfilePic(res.data.data.url);
-    }
 
 
     return (
@@ -85,33 +85,18 @@ const Registration = () => {
             <div className="">
                 <div className="">
                     <form onSubmit={handleSubmit(onSubmit)} className="fieldset">
-
-                        {
-                            profilePic ?
-                                <img src={profilePic} alt="profile pic"
-                                    className='w-15 h-15 rounded-full text-gray-400 hover:text-gray-600 transition duration-200'
-                                />
-                                :
-                                <>
-                                    <label htmlFor="imageUpload" className="cursor-pointer inline-block">
-                                        <img className='w-10' src='https://img.icons8.com/?size=128&id=42862&format=png' alt="" />
-                                        <p className='text-slate-600'>Upload Your photo</p>
-                                    </label>
-                                    <input
-                                        type="file"
-                                        id="imageUpload"
-                                        accept="image/*"
-                                        className="hidden"
-                                        onChange={handleImageChange}
-                                    />
-                                </>
-                        }
-
+            
 
                         <label className="label">Name</label>
                         <input type="name" {...register('name', { required: true })} className="input md:w-3/4" placeholder="Your Name" />
                         {
                             errors.name?.type === 'required' && <p className='text-red-500'>name is required</p>
+                        }
+                        
+                        <label className="label">Photo URL</label>
+                        <input type="photo" {...register('photo', { required: true })} className="input md:w-3/4" placeholder="Your Photo URL" />
+                        {
+                            errors.photo?.type === 'required' && <p className='text-red-500'>Photo URL is required</p>
                         }
 
                         <label className="label">Email</label>
@@ -141,9 +126,9 @@ const Registration = () => {
                             <span className='text-primary font-semibold underline cursor-pointer text-sm'>Login</span>
                         </Link></p>
 
-                        {/* <div className='md:w-3/4'>
+                        <div className='md:w-3/4'>
                             <GoogleRegister></GoogleRegister>
-                        </div> */}
+                        </div>
                     </form>
                 </div>
             </div>

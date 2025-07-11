@@ -1,8 +1,45 @@
 import React from 'react';
 import SiteLogo from './SiteLogo';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
+import useAuth from '../Hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
+    const { user, logOut } = useAuth();
+    const navigate = useNavigate();
+
+
+    const handleLogout = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You have to login again then!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Logout!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                logOut()
+                    .then(() => {
+                        navigate('/');
+                    })
+                    .catch(error => {
+                        console.error(error)
+                    })
+
+                Swal.fire({
+                    title: "Logged Out!",
+                    text: "Logout Successfully.",
+                    icon: "success"
+                });
+            }
+        });
+
+
+    }
+
 
     const navItems = <>
         <li><NavLink className='rounded-full lg:mr-2 mb-1' to="/">Home</NavLink></li>
@@ -42,26 +79,38 @@ const Navbar = () => {
             </div>
             <div className="navbar-end space-x-2">
 
-                <>
-                    <NavLink to='/auth/login' className="btn border-blue-100 p-2 md:p-4 border-2 text-blue-400 bg-white">Join Us</NavLink>
-
-                </>
-
-                {/* {
+                {
                     user ?
                         <>
-                            <img src={user.photoURL} alt="profile pic"
+                            {/* <img src={user.photoURL} alt="profile pic"
                                 className='w-12 h-12 rounded-full text-gray-400 hover:text-gray-600 transition duration-200'
                             />
-                            <button onClick={handleLogout} className="btn border-primary border-2 p-2 md:p-4 text-secondary bg-white">Logout</button>
+                            <button onClick={handleLogout} className="btn border-primary border-2 p-2 md:p-4 text-secondary bg-white">Logout</button> */}
+
+
+                            <div className="dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className="rounded-full">
+
+                                    <img src={user.photoURL} alt="profile pic"
+                                        className='w-12 h-12 hover:scale-105 cursor-pointer rounded-full transition duration-200'
+                                    />
+
+                                </div>
+                                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm space-y-1">
+
+                                    <li className='font-bold mx-auto text-lg'>{user.displayName}</li>
+
+                                    <li><NavLink to='/dashboard' className="btn hover:scale-103 transition p-2 md:p-4 text-white bg-blue-300">Dashboard</NavLink></li>
+
+                                    <li><button onClick={handleLogout} className="btn hover:scale-103 transition bg-primary border-2 p-2 md:p-4 text-white">Logout</button></li>
+                                </ul>
+                            </div>
                         </>
                         :
                         <>
-                            <NavLink to='/login' className="btn border-primary p-2 md:p-4 border-2 text-secondary bg-white">Sign In</NavLink>
-
-                            <NavLink to='/register' className="btn border-primary p-2 md:p-4 border-2 bg-primary text-white">Sign Up</NavLink>
+                            <NavLink to='/auth/login' className="btn border-blue-100 p-2 md:p-4 border-2 text-blue-400 bg-white">Join Us</NavLink>
                         </>
-                } */}
+                }
             </div>
         </div>
     );

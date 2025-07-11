@@ -9,6 +9,7 @@
 - npm install -g firebase-tools
 - npm install aos --save
 - npm install axios
+- npm install sweetalert2
 - 
 
 ## Expanding the ESLint configuration
