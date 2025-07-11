@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import useAuth from '../../../Hooks/useAuth';
 import Swal from 'sweetalert2';
 import GoogleLogin from './GoogleLogin';
@@ -8,6 +8,8 @@ import GoogleLogin from './GoogleLogin';
 const Login = () => {
         const { signIn } = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location)
 
     const { register,
         handleSubmit,
@@ -28,7 +30,7 @@ const Login = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    navigate('/')
+                    navigate(location.state ? location.state : "/");
                 }
             })
     }

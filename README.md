@@ -3,7 +3,7 @@ A Medical Camp Management System (MCMS) using the MERN stack. This system helps 
 
 
 ## Live site Link:-
-
+https://b11a12-medicamp-site.web.app
 
 
 ## NPM Packages I Used
@@ -16,6 +16,7 @@ A Medical Camp Management System (MCMS) using the MERN stack. This system helps 
 - npm install aos --save
 - npm install axios
 - npm install sweetalert2
+- npm install react-icons --save
 - 
 
 
