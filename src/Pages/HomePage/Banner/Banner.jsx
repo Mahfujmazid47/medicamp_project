@@ -25,7 +25,7 @@ const slides = [
 
 const Banner = () => {
     return (
-        <div data-aos='zoom-in' duration='3000' className="mt-6">
+        <div data-aos='zoom-in' duration='3000' className="mt-6 max-w-7xl mx-auto">
             <Carousel
                 autoPlay
                 infiniteLoop
@@ -36,10 +36,10 @@ const Banner = () => {
                 emulateTouch
             >
                 {slides.map(slide => (
-                    <div key={slide.id} className="relative h-[400px] md:h-[500px] lg:h-[600px] w-full">
+                    <div key={slide.id} className="relative h-[400px] md:h-[500px] lg:h-[600px]">
                         {/* Background Image */}
                         <div
-                            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                            className="absolute inset-0 bg-cover bg-center bg-no-repeat rounded-2xl"
                             style={{
                                 backgroundImage: `url(${slide.image})`,
                                 filter: 'brightness(40%)'
