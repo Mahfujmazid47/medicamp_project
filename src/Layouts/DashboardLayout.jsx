@@ -5,15 +5,17 @@ import { FaPlus, FaEdit } from 'react-icons/fa';
 // import useUserRole from '../Hooks/useUserRole';
 import SiteLogo from '../Shared/SiteLogo';
 import Loading from '../Shared/Loading';
+import useUserRole from '../Hooks/useUserRole';
 
 const DashboardLayout = () => {
     const navigation = useNavigation();
-    // const { role, isRoleLoading } = useUserRole();
+    const { role, isRoleLoading } = useUserRole();
+    console.log(role, isRoleLoading)
     const navigate = useNavigate();
     const handleReload = () => {
         navigate('/')
         window.location.reload('/');
-        
+
     }
     return (
         <div>
@@ -63,29 +65,39 @@ const DashboardLayout = () => {
                                 <FaHome /> Home
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink to='/dashboard/profile' className="flex items-center gap-2">
-                                <FaUser /> Organizer Profile
-                            </NavLink>
-                        </li>
 
-                        <li>
-                            <NavLink to='/dashboard/add-camp' className="flex items-center gap-2">
-                                <FaPlus /> Add A Camp
-                            </NavLink>
-                        </li>
 
-                        <li>
-                            <NavLink to='/dashboard/manage-camps' className="flex items-center gap-2">
-                                <FaEdit /> Manage Camps
-                            </NavLink>
-                        </li>
 
-                        <li>
-                            <NavLink to='/dashboard/manage-registered' className="flex items-center gap-2">
-                                <FaUsers /> Manage Registered
-                            </NavLink>
-                        </li>
+                        {/* Organizer Links */}
+                        {!isRoleLoading && role === 'organizer' &&
+                            <>
+                                <li>
+                                    <NavLink to='/dashboard/profile' className="flex items-center gap-2">
+                                        <FaUser /> Organizer Profile
+                                    </NavLink>
+                                </li>
+
+                                <li>
+                                    <NavLink to='/dashboard/add-camp' className="flex items-center gap-2">
+                                        <FaPlus /> Add A Camp
+                                    </NavLink>
+                                </li>
+
+                                <li>
+                                    <NavLink to='/dashboard/manage-camps' className="flex items-center gap-2">
+                                        <FaEdit /> Manage Camps
+                                    </NavLink>
+                                </li>
+
+                                <li>
+                                    <NavLink to='/dashboard/manage-registered' className="flex items-center gap-2">
+                                        <FaUsers /> Manage Registered
+                                    </NavLink>
+                                </li>
+                            </>
+                        }
+
+
 
 
                         {/* Rider links */}
