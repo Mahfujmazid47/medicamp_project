@@ -104,7 +104,7 @@ const ManageCamps = () => {
             </div>
 
             {isLoading ? <Loading /> : (
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto w-full">
                     <table className="table table-zebra w-full text-sm md:text-base">
                         <thead className="bg-blue-100">
                             <tr>
@@ -124,7 +124,7 @@ const ManageCamps = () => {
                                     <td>{camp.date}</td>
                                     <td>{camp.location}</td>
                                     <td>{camp.healthcareProfessional}</td>
-                                    <td className="space-x-2">
+                                    <td className="flex flex-wrap gap-2">
                                         <Link to={`/dashboard/update-camp/${camp._id}`}>
                                             <button className="btn btn-sm btn-info text-white"><FaEdit /></button>
                                         </Link>
