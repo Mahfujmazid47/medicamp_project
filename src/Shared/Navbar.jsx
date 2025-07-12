@@ -3,11 +3,12 @@ import SiteLogo from './SiteLogo';
 import { NavLink, useNavigate } from 'react-router';
 import useAuth from '../Hooks/useAuth';
 import Swal from 'sweetalert2';
+import useRefreshUser from '../Hooks/useRefreshUser';
 
 const Navbar = () => {
     const { user, logOut } = useAuth();
     const navigate = useNavigate();
-
+    useRefreshUser();
 
     const handleLogout = () => {
         Swal.fire({

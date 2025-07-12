@@ -9,7 +9,7 @@
   default: true;
   --color-primary: #6495ED;
   --color-secondary: #ADD8E6;
-  --color-primary-content: #C4E1E6;
+  --color-primary-content: #fff;
   --color-secondary-content: #EBFFD8;
 }
 

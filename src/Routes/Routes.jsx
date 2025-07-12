@@ -11,6 +11,9 @@ import DashboardLayout from '../Layouts/DashboardLayout';
 import ErrorPage from '../Shared/ErrorPage';
 import PrivateRoute from './PrivateRoute';
 import OrganizerProfile from '../Pages/Dashboard/Organizer/OrganizerProfile';
+import AddCamp from '../Pages/Dashboard/Organizer/AddCamp';
+import ManageCamps from '../Pages/Dashboard/Organizer/ManageCamps';
+import UpdateCamp from '../Pages/Dashboard/Organizer/UpdateCamp';
 
 export const router = createBrowserRouter([
     {
@@ -52,7 +55,31 @@ export const router = createBrowserRouter([
                         <OrganizerProfile></OrganizerProfile>
                     </PrivateRoute>
                 )
-            }
+            },
+            {
+                path: "/dashboard/add-camp",
+                element: (
+                    <PrivateRoute>
+                        <AddCamp></AddCamp>
+                    </PrivateRoute>
+                )
+            },
+            {
+                path: "/dashboard/manage-camps",
+                element: (
+                    <PrivateRoute>
+                        <ManageCamps></ManageCamps>
+                    </PrivateRoute>
+                )
+            },
+            {
+                path: "/dashboard/update-camp/:campId",
+                element: (
+                    <PrivateRoute>
+                        <UpdateCamp></UpdateCamp>
+                    </PrivateRoute>
+                )
+            },
         ]
     },
     {

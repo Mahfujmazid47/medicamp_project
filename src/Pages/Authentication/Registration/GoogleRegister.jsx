@@ -26,6 +26,8 @@ const GoogleRegister = () => {
                 //update user info in database 
                 const userInfo = {
                     email: user.email,
+                    name:user.displayName,
+                    photoURL: user.photoURL,
                     role: 'participant',// default role
                     created_at: new Date().toISOString(),
                 };

@@ -19,7 +19,7 @@ const Registration = () => {
 
     const onSubmit = data => {
         // console.log(data);
-        const { email, password } = data;
+        const { email, password,name, photo, } = data;
         createUser(email, password)
             .then(async (result) => {
                 console.log(result.user);
@@ -47,6 +47,8 @@ const Registration = () => {
                 //update user info in database 
                 const userInfo = {
                     email: email,
+                    name,
+                    photoURL: photo,
                     role: 'participant',// default role
                     created_at: new Date().toISOString(),
                 };

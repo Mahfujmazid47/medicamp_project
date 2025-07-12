@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
-import { Link, NavLink, Outlet, useNavigation } from 'react-router';
-import { FaHome, FaBoxOpen, FaHistory, FaSearchLocation, FaUserEdit, FaUsers, FaUserClock, FaUserTimes, FaUserShield, FaMotorcycle, FaShippingFast } from "react-icons/fa";
+import { Link, NavLink, Outlet, useNavigate, useNavigation } from 'react-router';
+import { FaHome, FaBoxOpen, FaHistory, FaSearchLocation, FaUserEdit, FaUsers, FaUserClock, FaUserTimes, FaUserShield, FaMotorcycle, FaShippingFast, FaUser } from "react-icons/fa";
 import { FaPlus, FaEdit } from 'react-icons/fa';
 // import useUserRole from '../Hooks/useUserRole';
 import SiteLogo from '../Shared/SiteLogo';
@@ -9,6 +9,12 @@ import Loading from '../Shared/Loading';
 const DashboardLayout = () => {
     const navigation = useNavigation();
     // const { role, isRoleLoading } = useUserRole();
+    const navigate = useNavigate();
+    const handleReload = () => {
+        navigate('/')
+        window.location.reload('/');
+        
+    }
     return (
         <div>
             <div className="drawer lg:drawer-open">
@@ -53,8 +59,13 @@ const DashboardLayout = () => {
                         <SiteLogo></SiteLogo>
 
                         <li>
+                            <NavLink onClick={handleReload} to='/' className="flex items-center gap-2">
+                                <FaHome /> Home
+                            </NavLink>
+                        </li>
+                        <li>
                             <NavLink to='/dashboard/profile' className="flex items-center gap-2">
-                                <FaHome /> Organizer Profile
+                                <FaUser /> Organizer Profile
                             </NavLink>
                         </li>
 

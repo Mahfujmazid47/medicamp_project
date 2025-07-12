@@ -1,139 +1,96 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import useAuth from '../../../Hooks/useAuth';
 
 const AddCamp = () => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors }
-  } = useForm();
+  const axiosSecure = useAxiosSecure();
+  const {user} = useAuth();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   const onSubmit = async (data) => {
-    const campData = {
+    const campInfo = {
+      organizerEmail : user.email,
       campName: data.campName,
       image: data.image,
-      campFees: parseFloat(data.campFees),
-      dateTime: data.dateTime,
+      fees: parseFloat(data.fees),
+      date: data.date,
+      time: data.time,
       location: data.location,
       healthcareProfessional: data.healthcareProfessional,
-      participantCount: 0, // Default
       description: data.description,
-      createdAt: new Date().toISOString()
+      participantCount: 0,
     };
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/camps`, campData);
-
+      console.log("Sending camp data:", campInfo);
+      const res = await axiosSecure.post('/camps', campInfo);
+      console.log("Response:", res.status, res.data);
       if (res.data.insertedId) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Camp Added Successfully!',
-          showConfirmButton: false,
-          timer: 1500
-        });
+        Swal.fire('Success', 'Camp added successfully!', 'success');
         reset();
       }
-    } catch (err) {
-      console.error(err);
-      Swal.fire({
-        icon: 'error',
-        title: 'Something went wrong!',
-        text: err.message
-      });
+    } catch (error) {
+      Swal.fire('Error', 'Something went wrong!', "error", error);
     }
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white rounded shadow-md mt-10">
-      <h2 className="text-3xl font-bold mb-4 text-center">Add a Medical Camp</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <div data-aos='zoom-out' duration='2000' className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg mt-8">
+      <h2 className="text-2xl font-bold mb-6 text-center text-blue-700">Add a New Camp</h2>
+      <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-        {/* Camp Name */}
         <div>
-          <label className="block mb-1 font-medium">Camp Name</label>
-          <input
-            type="text"
-            {...register('campName', { required: true })}
-            className="input input-bordered w-full"
-          />
-          {errors.campName && <span className="text-red-500 text-sm">Camp name is required</span>}
+          <label>Camp Name</label>
+          <input {...register("campName", { required: true })} className="input input-bordered w-full" />
+          {errors.campName && <p className="text-red-500">Camp Name is required</p>}
         </div>
 
-        {/* Image URL */}
         <div>
-          <label className="block mb-1 font-medium">Image URL</label>
-          <input
-            type="text"
-            {...register('image', { required: true })}
-            className="input input-bordered w-full"
-          />
-          {errors.image && <span className="text-red-500 text-sm">Image URL is required</span>}
+          <label>Image URL</label>
+          <input {...register("image", { required: true })} className="input input-bordered w-full" />
+          {errors.image && <p className="text-red-500">Image URL is required</p>}
         </div>
 
-        {/* Camp Fees */}
         <div>
-          <label className="block mb-1 font-medium">Camp Fees (৳)</label>
-          <input
-            type="number"
-            step="0.01"
-            {...register('campFees', { required: true })}
-            className="input input-bordered w-full"
-          />
-          {errors.campFees && <span className="text-red-500 text-sm">Camp fee is required</span>}
+          <label>Camp Fees (৳)</label>
+          <input type="number" {...register("fees", { required: true })} className="input input-bordered w-full" />
+          {errors.fees && <p className="text-red-500">Fees is required</p>}
         </div>
 
-        {/* Date & Time */}
         <div>
-          <label className="block mb-1 font-medium">Date & Time</label>
-          <input
-            type="datetime-local"
-            {...register('dateTime', { required: true })}
-            className="input input-bordered w-full"
-          />
-          {errors.dateTime && <span className="text-red-500 text-sm">Date & Time is required</span>}
+          <label>Date</label>
+          <input type="date" {...register("date", { required: true })} className="input input-bordered w-full" />
+          {errors.date && <p className="text-red-500">Date is required</p>}
         </div>
 
-        {/* Location */}
         <div>
-          <label className="block mb-1 font-medium">Location</label>
-          <input
-            type="text"
-            {...register('location', { required: true })}
-            className="input input-bordered w-full"
-          />
-          {errors.location && <span className="text-red-500 text-sm">Location is required</span>}
+          <label>Time</label>
+          <input type="time" {...register("time", { required: true })} className="input input-bordered w-full" />
+          {errors.time && <p className="text-red-500">Time is required</p>}
         </div>
 
-        {/* Healthcare Professional */}
         <div>
-          <label className="block mb-1 font-medium">Healthcare Professional Name</label>
-          <input
-            type="text"
-            {...register('healthcareProfessional', { required: true })}
-            className="input input-bordered w-full"
-          />
-          {errors.healthcareProfessional && (
-            <span className="text-red-500 text-sm">Name is required</span>
-          )}
+          <label>Location</label>
+          <input {...register("location", { required: true })} className="input input-bordered w-full" />
+          {errors.location && <p className="text-red-500">Location is required</p>}
         </div>
 
-        {/* Description */}
-        <div>
-          <label className="block mb-1 font-medium">Camp Description</label>
-          <textarea
-            {...register('description', { required: true })}
-            className="textarea textarea-bordered w-full"
-            rows={4}
-          ></textarea>
-          {errors.description && <span className="text-red-500 text-sm">Description is required</span>}
+        <div className="md:col-span-2">
+          <label>Healthcare Professional Name</label>
+          <input {...register("healthcareProfessional", { required: true })} className="input input-bordered w-full" />
+          {errors.healthcareProfessional && <p className="text-red-500">Professional name is required</p>}
         </div>
 
-        {/* Submit Button */}
-        <div className="text-center">
-          <button type="submit" className="btn btn-primary w-full md:w-1/2">Add Camp</button>
+        <div className="md:col-span-2">
+          <label>Description</label>
+          <textarea {...register("description", { required: true })} className="textarea textarea-bordered w-full" />
+          {errors.description && <p className="text-red-500">Description is required</p>}
+        </div>
+
+        <div className="md:col-span-2 text-center">
+          <input type="submit" value="Add Camp" className="btn btn-primary w-1/2" />
         </div>
       </form>
     </div>
