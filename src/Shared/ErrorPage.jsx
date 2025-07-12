@@ -9,7 +9,7 @@ const ErrorPage = () => {
         <div className="hero-content flex-col">
 
           <p className="text-6xl mb-4" role="img" aria-label="Sad Face">
-            🩺
+            ⚠️
           </p>
 
 

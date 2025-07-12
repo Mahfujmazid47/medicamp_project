@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import useAuth from '../../../Hooks/useAuth';
 import Swal from 'sweetalert2';
@@ -13,6 +13,16 @@ const ManageCamps = () => {
     const axiosSecure = useAxiosSecure();
     const queryClient = useQueryClient();
 
+    // for pagination and search --> 
+    const [searchTerm, setSearchTerm] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+
+
+
+
+
+
     // 🔹 Load camps created by this organizer
     const { data: camps = [], isLoading } = useQuery({
         queryKey: ['myCamps', user?.email],
@@ -22,6 +32,26 @@ const ManageCamps = () => {
         },
         enabled: !!user?.email,
     });
+
+
+
+    // 🔍 Filtered camps by search
+    const filteredCamps = useMemo(() => {
+        return camps.filter(camp =>
+            camp.campName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            camp.date.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            camp.healthcareProfessional.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    }, [searchTerm, camps]);
+
+    // 🔢 Paginated data
+    const totalPages = Math.ceil(filteredCamps.length / itemsPerPage);
+    const paginatedCamps = filteredCamps.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
+
+
 
     // 🔹 Delete camp
     const deleteMutation = useMutation({
@@ -52,17 +82,30 @@ const ManageCamps = () => {
         });
     };
 
-    if(camps.length < 1){
+    if (camps.length < 1) {
         return <NoCamps />
     }
 
     return (
-        <div data-aos='zoom-out' duration='2000' className="p-6 max-w-6xl mx-auto">
+        <div data-aos='zoom-out' duration='2000' className="p-6 max-w-7xl mx-auto">
             <h2 className="text-2xl font-bold mb-6 text-center">Manage Your Camps</h2>
+
+            <div className="flex justify-center mb-4">
+                <input
+                    type="text"
+                    placeholder="Search by name, date, professional..."
+                    className="input input-bordered w-full md:w-1/2"
+                    value={searchTerm}
+                    onChange={(e) => {
+                        setSearchTerm(e.target.value);
+                        setCurrentPage(1);
+                    }}
+                />
+            </div>
 
             {isLoading ? <Loading /> : (
                 <div className="overflow-x-auto">
-                    <table className="table table-zebra w-full">
+                    <table className="table table-zebra w-full text-sm md:text-base">
                         <thead className="bg-blue-100">
                             <tr>
                                 <th>#</th>
@@ -74,9 +117,9 @@ const ManageCamps = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {camps.map((camp, index) => (
+                            {paginatedCamps.map((camp, index) => (
                                 <tr key={camp._id}>
-                                    <td>{index + 1}</td>
+                                    <td>{(currentPage - 1) * itemsPerPage + index + 1}</td>
                                     <td>{camp.campName}</td>
                                     <td>{camp.date}</td>
                                     <td>{camp.location}</td>
@@ -93,6 +136,18 @@ const ManageCamps = () => {
                             ))}
                         </tbody>
                     </table>
+
+                    <div className="flex justify-center mt-6 space-x-1">
+                        {Array.from({ length: totalPages }, (_, i) => (
+                            <button
+                                key={i}
+                                onClick={() => setCurrentPage(i + 1)}
+                                className={`btn btn-sm ${currentPage === i + 1 ? 'btn-primary' : 'btn-outline'}`}
+                            >
+                                {i + 1}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             )}
         </div>

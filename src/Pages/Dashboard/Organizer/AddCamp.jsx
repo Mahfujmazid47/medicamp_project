@@ -11,7 +11,7 @@ const AddCamp = () => {
 
   const onSubmit = async (data) => {
     const campInfo = {
-      organizerEmail : user.email,
+      email : user.email,
       campName: data.campName,
       image: data.image,
       fees: parseFloat(data.fees),
