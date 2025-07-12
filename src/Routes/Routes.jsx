@@ -10,6 +10,7 @@ import Registration from '../Pages/Authentication/Registration/Registration';
 import DashboardLayout from '../Layouts/DashboardLayout';
 import ErrorPage from '../Shared/ErrorPage';
 import PrivateRoute from './PrivateRoute';
+import OrganizerProfile from '../Pages/Dashboard/Organizer/OrganizerProfile';
 
 export const router = createBrowserRouter([
     {
@@ -42,7 +43,17 @@ export const router = createBrowserRouter([
             <PrivateRoute>
                 <DashboardLayout></DashboardLayout>
             </PrivateRoute>
-        )
+        ),
+        children: [
+            {
+                path: "/dashboard/profile",
+                element: (
+                    <PrivateRoute>
+                        <OrganizerProfile></OrganizerProfile>
+                    </PrivateRoute>
+                )
+            }
+        ]
     },
     {
         path: "/*",

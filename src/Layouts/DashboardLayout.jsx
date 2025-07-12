@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { Link, NavLink, Outlet, useNavigation } from 'react-router';
 import { FaHome, FaBoxOpen, FaHistory, FaSearchLocation, FaUserEdit, FaUsers, FaUserClock, FaUserTimes, FaUserShield, FaMotorcycle, FaShippingFast } from "react-icons/fa";
+import { FaPlus, FaEdit } from 'react-icons/fa';
 // import useUserRole from '../Hooks/useUserRole';
 import SiteLogo from '../Shared/SiteLogo';
 import Loading from '../Shared/Loading';
@@ -47,33 +48,31 @@ const DashboardLayout = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                    <ul className="menu bg-base-200 text-base-content min-h-full w-50 p-4">
+                    <ul className="menu bg-base-200 text-base-content min-h-full w-50 md:w-60 p-4">
                         {/* Sidebar content here */}
                         <SiteLogo></SiteLogo>
 
                         <li>
-                            <NavLink to='/' className="flex items-center gap-2">
-                                <FaHome /> Home
+                            <NavLink to='/dashboard/profile' className="flex items-center gap-2">
+                                <FaHome /> Organizer Profile
                             </NavLink>
                         </li>
+
                         <li>
-                            <NavLink to='/dashboard/myParcels' className="flex items-center gap-2">
-                                <FaBoxOpen /> My Parcels
+                            <NavLink to='/dashboard/add-camp' className="flex items-center gap-2">
+                                <FaPlus /> Add A Camp
                             </NavLink>
                         </li>
+
                         <li>
-                            <NavLink to='/dashboard/paymentHistory' className="flex items-center gap-2">
-                                <FaHistory /> Payment History
+                            <NavLink to='/dashboard/manage-camps' className="flex items-center gap-2">
+                                <FaEdit /> Manage Camps
                             </NavLink>
                         </li>
+
                         <li>
-                            <NavLink to='/dashboard/trackParcel' className="flex items-center gap-2">
-                                <FaSearchLocation /> Track Parcel
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to='/dashboard/updateProfile' className="flex items-center gap-2">
-                                <FaUserEdit /> Update Profile
+                            <NavLink to='/dashboard/manage-registered' className="flex items-center gap-2">
+                                <FaUsers /> Manage Registered
                             </NavLink>
                         </li>
 

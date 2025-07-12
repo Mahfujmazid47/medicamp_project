@@ -2,49 +2,47 @@ import React from 'react';
 import useAuth from '../../../Hooks/useAuth';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
+import useAxios from '../../../Hooks/useAxios';
 
 const GoogleRegister = () => {
 
     const { googleSignIn } = useAuth();
     const navigate = useNavigate();
-    // const axiosInstance = useAxios();
+    const axiosInstance = useAxios();
 
     const handleGoogleLogIn = () => {
         googleSignIn()
             .then(async (result) => {
                 const user = result.user;
-                console.log(user);
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Google Registration Successful",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                navigate('/')
+
+
+                // ✅ Get Firebase JWT token
+                const token = await user.getIdToken();
+
+                // ✅ Save token to localStorage
+                localStorage.setItem('token', token);
 
 
                 //update user info in database 
-                // const userInfo = {
-                //     email: user.email,
-                //     role: 'user',// default role
-                //     created_at: new Date().toISOString(),
-                //     last_log_in: new Date().toISOString(),
-                // };
+                const userInfo = {
+                    email: user.email,
+                    role: 'participant',// default role
+                    created_at: new Date().toISOString(),
+                };
 
-                // const userRes = await axiosInstance.post('/users', userInfo);
-                // console.log;(userRes.data)
-                // if(userRes.data.insertedId){
-                //     Swal.fire({
-                //         position: "center",
-                //         icon: "success",
-                //         title: "Google Registration Successful",
-                //         showConfirmButton: false,
-                //         timer: 1500
-                //     });
-                //     navigate('/')
+                const userRes = await axiosInstance.post('/users', userInfo);
+                console.log(userRes.data)
+                if (userRes.data.upsertedCount) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Google Registration Successful",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate('/')
 
-                // }
+                }
 
 
             })

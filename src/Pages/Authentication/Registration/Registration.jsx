@@ -4,10 +4,12 @@ import { Link, useNavigate } from 'react-router';
 import useAuth from '../../../Hooks/useAuth';
 import Swal from 'sweetalert2';
 import GoogleRegister from './GoogleRegister';
+import useAxios from '../../../Hooks/useAxios';
 
 const Registration = () => {
     const { createUser, userProfileUpdate } = useAuth();
     const navigate = useNavigate();
+        const axiosInstance = useAxios();
 
     const { register,
         handleSubmit,
@@ -16,20 +18,18 @@ const Registration = () => {
 
 
     const onSubmit = data => {
-        console.log(data);
+        // console.log(data);
         const { email, password } = data;
         createUser(email, password)
             .then(async (result) => {
                 console.log(result.user);
+                const user = result.user;
 
-                Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: "Registration Successful",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    navigate('/')
+                // ✅ Get Firebase JWT token
+                const token = await user.getIdToken();
+
+                // ✅ Save token to localStorage
+                localStorage.setItem('token', token);
 
                 // update user info in firebase
                 const profileInfo = {
@@ -38,31 +38,30 @@ const Registration = () => {
                 }
                 userProfileUpdate(profileInfo)
                     .then(() => {
-                        console.log('Name and Pic uploaded')
+                        // console.log('Name and Pic uploaded')
                     })
                     .catch(error =>
                         console.log(error)
                     )
 
                 //update user info in database 
-                // const userInfo = {
-                //     email: email,
-                //     role: 'user',// default role
-                //     created_at: new Date().toISOString(),
-                //     last_log_in: new Date().toISOString(),
-                // };
-                // const userResponse = await axiosInstance.post('/users', userInfo);
-                // console.log(userResponse.data);
-                // if (userResponse.data.insertedId) {
-                //     Swal.fire({
-                //         position: "center",
-                //         icon: "success",
-                //         title: "Registration Successful",
-                //         showConfirmButton: false,
-                //         timer: 1500
-                //     });
-                //     navigate('/');
-                // }
+                const userInfo = {
+                    email: email,
+                    role: 'participant',// default role
+                    created_at: new Date().toISOString(),
+                };
+                const userResponse = await axiosInstance.post('/users', userInfo);
+                console.log(userResponse.data);
+                if (userResponse.data.upsertedCount|| userResponse.data.matchedCount) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Registration Successful",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate('/');
+                }
             })
             .catch(error => {
                 console.error(error);
@@ -85,16 +84,16 @@ const Registration = () => {
             <div className="">
                 <div className="">
                     <form onSubmit={handleSubmit(onSubmit)} className="fieldset">
-            
+
 
                         <label className="label">Name</label>
-                        <input type="name" {...register('name', { required: true })} className="input md:w-3/4" placeholder="Your Name" />
+                        <input type="text" {...register('name', { required: true })} className="input md:w-3/4" placeholder="Your Name" />
                         {
                             errors.name?.type === 'required' && <p className='text-red-500'>name is required</p>
                         }
-                        
+
                         <label className="label">Photo URL</label>
-                        <input type="photo" {...register('photo', { required: true })} className="input md:w-3/4" placeholder="Your Photo URL" />
+                        <input type="text" {...register('photo', { required: true })} className="input md:w-3/4" placeholder="Your Photo URL" />
                         {
                             errors.photo?.type === 'required' && <p className='text-red-500'>Photo URL is required</p>
                         }

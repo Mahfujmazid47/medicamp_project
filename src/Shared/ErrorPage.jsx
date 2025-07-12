@@ -9,7 +9,7 @@ const ErrorPage = () => {
         <div className="hero-content flex-col">
 
           <p className="text-6xl mb-4" role="img" aria-label="Sad Face">
-            😞
+            🩺
           </p>
 
 
@@ -26,6 +26,18 @@ const ErrorPage = () => {
           <p className="text-lg text-base-content opacity-70 mb-8">
             The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
           </p>
+
+
+          <button
+              className="btn btn-outline hover:text-white btn-primary btn-wide btn-lg rounded-full flex items-center justify-center"
+              onClick={() => window.history.back()}
+            >
+              {/* SVG icon for a left arrow */}
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Go Back
+            </button>
 
 
           <button

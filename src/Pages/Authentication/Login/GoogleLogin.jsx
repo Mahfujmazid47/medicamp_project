@@ -11,8 +11,9 @@ const GoogleLogin = () => {
 
     const handleGoogleLogIn = () => {
         googleSignIn()
-            .then(result => {
+            .then(async result => {
                 console.log(result.user);
+                const user = result.user;
                 Swal.fire({
                     position: "center",
                     icon: "success",
@@ -21,6 +22,11 @@ const GoogleLogin = () => {
                     timer: 1500
                 });
                 navigate("/")
+                                // ✅ Get Firebase JWT token
+                const token = await user.getIdToken();
+
+                // ✅ Save token to localStorage
+                localStorage.setItem('token', token);
             })
             .catch(error => {
                 console.error(error)

@@ -19,20 +19,38 @@ const Login = () => {
     const onSubmit = data => {
         console.log(data);
         const { email, password } = data;
-        signIn(email, password)
-            .then(result => {
-                console.log(result.user);
-                if (result.user) {
-                    Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: "Login Successful",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    navigate(location.state ? location.state : "/");
-                }
-            })
+         signIn(email, password)
+        .then(async result => {
+            const loggedUser = result.user;
+
+            if (loggedUser) {
+                // ✅ Get Firebase JWT token
+                const token = await loggedUser.getIdToken();
+
+                // ✅ Save token to localStorage
+                localStorage.setItem('token', token);
+
+                // ✅ Show success alert
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Login Successful",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+                // ✅ Redirect to previous location or home
+                navigate(location.state ? location.state : "/");
+            }
+        })
+        .catch(err => {
+            console.error(err.message);
+            Swal.fire({
+                icon: "error",
+                title: "Login Failed",
+                text: err.message
+            });
+        });
     }
 
     return (
