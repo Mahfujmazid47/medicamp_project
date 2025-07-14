@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Link, NavLink, Outlet, useNavigate, useNavigation } from 'react-router';
-import { FaHome, FaBoxOpen, FaHistory, FaSearchLocation, FaUserEdit, FaUsers, FaUserClock, FaUserTimes, FaUserShield, FaMotorcycle, FaShippingFast, FaUser } from "react-icons/fa";
+import { FaHome, FaBoxOpen, FaHistory, FaSearchLocation, FaUserEdit, FaUsers, FaUserClock, FaUserTimes, FaUserShield, FaMotorcycle, FaShippingFast, FaUser, FaChartLine, FaClipboardList, FaMoneyBillWave } from "react-icons/fa";
 import { FaPlus, FaEdit } from 'react-icons/fa';
 // import useUserRole from '../Hooks/useUserRole';
 import SiteLogo from '../Shared/SiteLogo';
@@ -98,54 +98,36 @@ const DashboardLayout = () => {
                         }
 
 
-
-
-                        {/* Rider links */}
-                        {/* {!isRoleLoading && role === 'rider' &&
+                        {/* Participant Links */}
+                        {!isRoleLoading && role === 'participant' &&
                             <>
                                 <li>
-                                    <Link to="/dashboard/pending-deliveries" className="flex items-center gap-2">
-                                        <FaShippingFast /> Pending Deliveries
-                                    </Link>
+                                    <NavLink to='/dashboard/analytics' className="flex items-center gap-2">
+                                        <FaChartLine /> Analytics
+                                    </NavLink>
+                                </li>
+
+                                <li>
+                                    <NavLink to='/dashboard/profile' className="flex items-center gap-2">
+                                        <FaUser /> Participant Profile
+                                    </NavLink>
+                                </li>
+
+                                <li>
+                                    <NavLink to='/dashboard/registered-camps' className="flex items-center gap-2">
+                                        <FaClipboardList /> Registered Camps
+                                    </NavLink>
+                                </li>
+
+                                <li>
+                                    <NavLink to='/dashboard/payment-history' className="flex items-center gap-2">
+                                        <FaMoneyBillWave /> Payment History
+                                    </NavLink>
                                 </li>
                             </>
-                        } */}
+                        }
 
 
-
-                        {/* Admin links */}
-                        {/* {!isRoleLoading && role === 'admin' &&
-                            <>
-                                <li>
-                                    <Link to="/dashboard/assign-riders" className="flex items-center gap-2">
-                                        <FaMotorcycle /> Assign Riders
-                                    </Link>
-                                </li>
-
-                                <li>
-                                    <Link to='/dashboard/activeRiders' className="flex items-center gap-2">
-                                        <FaUsers className="text-green-600" /> Active Riders
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to='/dashboard/pendingRiders' className="flex items-center gap-2">
-                                        <FaUserClock className="text-yellow-500" /> Pending Riders
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/dashboard/rejectedRiders" className="flex items-center gap-2">
-                                        <FaUserTimes className='text-red-500' /> Rejected Riders
-                                    </Link>
-                                </li>
-
-                                <li>
-                                    <Link to="/dashboard/manageUsers" className="flex items-center gap-2">
-                                        <FaUserShield /> Manage Users
-                                    </Link>
-                                </li>
-
-                            </>
-                        } */}
 
                     </ul>
                 </div>

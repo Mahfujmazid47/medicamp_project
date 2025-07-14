@@ -73,8 +73,8 @@ const OrganizerProfile = () => {
     if (isLoading) return <Loading />;
 
     return (
-        <div data-aos='zoom-out' duration='2000' className="max-w-xl min-h-[80vh] mx-auto my-16 p-8 bg-gradient-to-br from-blue-50 to-purple-100 shadow-2xl rounded-2xl border border-blue-200 flex flex-col justify-center">
-            <h2 className="text-4xl font-bold mb-10 text-center text-blue-700">Organizer Profile</h2>
+        <div data-aos='zoom-out' duration='2000' className="w-11/12 md:w-6/12 min-h-[80vh] mx-auto my-16 p-8 bg-gradient-to-br from-blue-50 to-purple-100 shadow-2xl rounded-2xl border border-blue-200 flex flex-col justify-center">
+            <h2 className="text-4xl font-bold mb-10 text-center text-blue-700">My Profile</h2>
 
             {!editMode ? (
                 <div className="space-y-8 text-base text-gray-800">
