@@ -104,8 +104,8 @@ const ManageCamps = () => {
             </div>
             {/* table table-zebra w-full text-sm md:text-base */}
             {isLoading ? <Loading /> : (
-                <div className="overflow-x-auto w-full">
-                    <table className="table table-zebra w-full text-xs sm:text-sm md:text-base min-w-[600px]">
+                <div className="overflow-x-auto max-w-full">
+                    <table className="table table-zebra max-w-full text-xs sm:text-sm md:text-base ">
                         <thead className="bg-blue-100">
                             <tr>
                                 <th>#</th>
