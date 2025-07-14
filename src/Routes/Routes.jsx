@@ -16,6 +16,7 @@ import ManageCamps from '../Pages/Dashboard/Organizer/ManageCamps';
 import UpdateCamp from '../Pages/Dashboard/Organizer/UpdateCamp';
 import AvailableCamps from '../Pages/AvailableCamps/AvailableCamps/AvailableCamps';
 import CampDetails from '../Pages/CampDetails/CampDetails';
+import RegisteredCamps from '../Pages/Dashboard/Participant/RegisteredCamps';
 
 export const router = createBrowserRouter([
     {
@@ -91,6 +92,14 @@ export const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <UpdateCamp></UpdateCamp>
+                    </PrivateRoute>
+                )
+            },
+            {
+                path: '/dashboard/registered-camps',
+                element: (
+                    <PrivateRoute>
+                        <RegisteredCamps></RegisteredCamps>
                     </PrivateRoute>
                 )
             },
