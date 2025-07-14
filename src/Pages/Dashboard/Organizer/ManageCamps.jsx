@@ -27,7 +27,7 @@ const ManageCamps = () => {
     const { data: camps = [], isLoading } = useQuery({
         queryKey: ['myCamps', user?.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/camps?email=${user?.email}`);
+            const res = await axiosSecure.get(`/organizer-camps?email=${user?.email}`);
             return res.data;
         },
         enabled: !!user?.email,
@@ -82,6 +82,10 @@ const ManageCamps = () => {
         });
     };
 
+    if (isLoading){
+        return <Loading />
+    }
+
     if (camps.length < 1) {
         return <NoCamps />
     }
@@ -103,9 +107,9 @@ const ManageCamps = () => {
                 />
             </div>
             {/* table table-zebra w-full text-sm md:text-base */}
-            {isLoading ? <Loading /> : (
-                <div className="overflow-x-auto max-w-full">
-                    <table className="table table-zebra max-w-full text-xs sm:text-sm md:text-base ">
+
+                <div className="overflow-x-auto">
+                    <table className="table table-zebra text-xs sm:text-sm md:text-base ">
                         <thead className="bg-blue-100">
                             <tr>
                                 <th>#</th>
@@ -149,7 +153,7 @@ const ManageCamps = () => {
                         ))}
                     </div>
                 </div>
-            )}
+
         </div>
     );
 };

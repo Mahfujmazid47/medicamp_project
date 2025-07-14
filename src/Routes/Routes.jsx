@@ -14,6 +14,8 @@ import OrganizerProfile from '../Pages/Dashboard/Organizer/OrganizerProfile';
 import AddCamp from '../Pages/Dashboard/Organizer/AddCamp';
 import ManageCamps from '../Pages/Dashboard/Organizer/ManageCamps';
 import UpdateCamp from '../Pages/Dashboard/Organizer/UpdateCamp';
+import AvailableCamps from '../Pages/AvailableCamps/AvailableCamps/AvailableCamps';
+import CampDetails from '../Pages/CampDetails/CampDetails';
 
 export const router = createBrowserRouter([
     {
@@ -24,6 +26,18 @@ export const router = createBrowserRouter([
                 index: true,
                 Component: Home,
             },
+            {
+                path: "/available-camps",
+                Component: AvailableCamps,
+            },
+            {
+                path: "/camp-details/:campId",
+                element: (
+                    <PrivateRoute>
+                        <CampDetails></CampDetails>
+                    </PrivateRoute>
+                )
+            }
         ]
     },
     {

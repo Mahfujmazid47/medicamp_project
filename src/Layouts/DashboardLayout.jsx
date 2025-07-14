@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Link, NavLink, Outlet, useNavigate, useNavigation } from 'react-router';
-import { FaHome, FaBoxOpen, FaHistory, FaSearchLocation, FaUserEdit, FaUsers, FaUserClock, FaUserTimes, FaUserShield, FaMotorcycle, FaShippingFast, FaUser, FaChartLine, FaClipboardList, FaMoneyBillWave } from "react-icons/fa";
+import { FaHome, FaUsers, FaUser, FaChartLine, FaClipboardList, FaMoneyBillWave } from "react-icons/fa";
 import { FaPlus, FaEdit } from 'react-icons/fa';
 // import useUserRole from '../Hooks/useUserRole';
 import SiteLogo from '../Shared/SiteLogo';
