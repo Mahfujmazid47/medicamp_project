@@ -5,13 +5,13 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 const slides = [
     {
         id: 1,
-        image: "https://img.freepik.com/premium-vector/migrant-family-doctor-tent-concept-banner-flat-style_98402-1337.jpg",
+        image: "https://img.freepik.com/premium-photo/poster-hospital-with-people-background_1064589-162846.jpg",
         title: "Successful Health Checkup Camp",
         description: "Over 500 patients served with free diagnostics and medicines."
     },
     {
         id: 2,
-        image: "https://img.freepik.com/premium-vector/volunteers-2d-vector-isolated-illustration_151150-6588.jpg",
+        image: "https://img.freepik.com/premium-vector/four-medical-staff-workers_24877-73757.jpg",
         title: "Volunteers in Action",
         description: "Medical students and doctors together changing lives in rural zones."
     },
@@ -25,7 +25,7 @@ const slides = [
 
 const Banner = () => {
     return (
-        <div data-aos='zoom-in' duration='3000' className="mt-6 max-w-7xl mx-auto">
+        <div data-aos='zoom-in' duration='4000' className="mt-6 max-w-7xl mx-auto">
             <Carousel
                 autoPlay
                 infiniteLoop

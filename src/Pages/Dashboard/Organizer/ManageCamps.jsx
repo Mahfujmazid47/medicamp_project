@@ -91,7 +91,7 @@ const ManageCamps = () => {
     }
 
     return (
-        <div data-aos='zoom-out' duration='2000' className="p-6 max-w-7xl mx-auto">
+        <div data-aos='zoom-out' duration='2000' className="p-6 w-full max-w-7xl mx-auto">
             <h2 className="text-2xl font-bold mb-6 text-center">Manage Your Camps</h2>
 
             <div className="flex justify-center mb-4">

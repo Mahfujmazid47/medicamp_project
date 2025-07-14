@@ -73,7 +73,7 @@ const Registration = () => {
 
 
     return (
-        <div data-aos='zoom-out' duration='2000' className='md:w-2/3 w-11/12'>
+        <div data-aos='fade-right' className='md:w-2/3 w-11/12'>
             <div className="">
                 <h1 className="text-3xl font-extrabold">Create an Account</h1>
                 <p className="py-3">

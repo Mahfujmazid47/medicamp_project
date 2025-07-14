@@ -43,8 +43,8 @@ const Navbar = () => {
 
 
     const navItems = <>
-        <li><NavLink className='rounded-full lg:mr-2 mb-1' to="/">Home</NavLink></li>
-        <li><NavLink className='rounded-full lg:mr-2 mb-1' to="/available-camps">Available Camps</NavLink></li>
+        <li><NavLink className='rounded-full font-bold lg:mr-2 mb-1' to="/">Home</NavLink></li>
+        <li><NavLink className='rounded-full font-bold lg:mr-2 mb-1' to="/available-camps">Available Camps</NavLink></li>
 
 
         {/* {

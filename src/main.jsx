@@ -10,6 +10,9 @@ import 'aos/dist/aos.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 AOS.init();
+AOS.init({
+  duration: 1100,
+})
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')).render(

@@ -47,6 +47,7 @@ const CampDetails = () => {
       campName: camp.campName,
       campFees: camp.fees,
       location: camp.location,
+      organizer_email: camp.email,
       healthcareProfessional: camp.healthcareProfessional,
       participantName: user?.displayName,
       participantEmail: user?.email,
@@ -55,12 +56,15 @@ const CampDetails = () => {
       gender: form.gender.value,
       emergencyContact: form.emergency.value,
       date: camp.date,
-      time: camp.time
+      time: camp.time,
+      joinedTime: new Date().toISOString(),
+      payment_status:'unpaid',
+      confirmation_status: 'pending',
     };
 
     try {
       const res = await registerMutation.mutateAsync(registrationData);
-      if (res.data.insertedId) {
+      if (res.data.result.insertedId) {
         await incrementMutation.mutateAsync();
         Swal.fire('Success!', 'You have joined the camp.', 'success');
         setIsModalOpen(false);
@@ -80,7 +84,8 @@ const CampDetails = () => {
       <p className="mb-1"><strong>Date & Time:</strong> {camp.date} at {camp.time}</p>
       <p className="mb-1"><strong>Location:</strong> {camp.location}</p>
       <p className="mb-1"><strong>Doctor:</strong> {camp.healthcareProfessional}</p>
-      <p className="mb-1"><strong>Participants:</strong> {camp.participantCount}</p>
+      <p className="mb-1"><strong>Organizer Email:</strong> {camp.email}</p>
+      <p><strong>Participants: <span className='badge badge-primary'>{camp.participantCount}</span></strong></p>
       <p className="mb-4"><strong>Description:</strong> {camp.description}</p>
 
       <button onClick={() => setIsModalOpen(true)} className="btn btn-primary">Join Camp</button>

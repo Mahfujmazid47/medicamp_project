@@ -61,7 +61,7 @@ const DashboardLayout = () => {
                         <SiteLogo></SiteLogo>
 
                         <li>
-                            <NavLink onClick={handleReload} to='/' className="flex items-center gap-2">
+                            <NavLink onClick={handleReload} to='/' className="flex font-semibold items-center gap-2">
                                 <FaHome /> Home
                             </NavLink>
                         </li>
@@ -72,25 +72,25 @@ const DashboardLayout = () => {
                         {!isRoleLoading && role === 'organizer' &&
                             <>
                                 <li>
-                                    <NavLink to='/dashboard/profile' className="flex items-center gap-2">
+                                    <NavLink to='/dashboard/profile' className="flex items-center gap-2 font-bold">
                                         <FaUser /> Organizer Profile
                                     </NavLink>
                                 </li>
 
                                 <li>
-                                    <NavLink to='/dashboard/add-camp' className="flex items-center gap-2">
+                                    <NavLink to='/dashboard/add-camp' className="flex items-center gap-2 font-bold">
                                         <FaPlus /> Add A Camp
                                     </NavLink>
                                 </li>
 
                                 <li>
-                                    <NavLink to='/dashboard/manage-camps' className="flex items-center gap-2">
+                                    <NavLink to='/dashboard/manage-camps' className="flex items-center gap-2 font-bold">
                                         <FaEdit /> Manage Camps
                                     </NavLink>
                                 </li>
 
                                 <li>
-                                    <NavLink to='/dashboard/manage-registered' className="flex items-center gap-2">
+                                    <NavLink to='/dashboard/manage-registered' className="flex items-center gap-2 font-bold">
                                         <FaUsers /> Manage Registered
                                     </NavLink>
                                 </li>
@@ -102,25 +102,25 @@ const DashboardLayout = () => {
                         {!isRoleLoading && role === 'participant' &&
                             <>
                                 <li>
-                                    <NavLink to='/dashboard/analytics' className="flex items-center gap-2">
+                                    <NavLink to='/dashboard/analytics' className="flex items-center gap-2 font-bold">
                                         <FaChartLine /> Analytics
                                     </NavLink>
                                 </li>
 
                                 <li>
-                                    <NavLink to='/dashboard/profile' className="flex items-center gap-2">
+                                    <NavLink to='/dashboard/profile' className="flex items-center gap-2 font-bold">
                                         <FaUser /> Participant Profile
                                     </NavLink>
                                 </li>
 
                                 <li>
-                                    <NavLink to='/dashboard/registered-camps' className="flex items-center gap-2">
+                                    <NavLink to='/dashboard/registered-camps' className="flex items-center gap-2 font-bold">
                                         <FaClipboardList /> Registered Camps
                                     </NavLink>
                                 </li>
 
                                 <li>
-                                    <NavLink to='/dashboard/payment-history' className="flex items-center gap-2">
+                                    <NavLink to='/dashboard/payment-history' className="flex items-center gap-2 font-bold">
                                         <FaMoneyBillWave /> Payment History
                                     </NavLink>
                                 </li>
