@@ -5,10 +5,12 @@ import Swal from 'sweetalert2';
 import Loading from '../../../Shared/Loading';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+import { useNavigate } from 'react-router';
 
 const RegisteredCamps = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate();
     const [search, setSearch] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
@@ -48,6 +50,10 @@ const RegisteredCamps = () => {
                 cancelMutation.mutate({ id, campId });
             }
         });
+    };
+
+    const handlePay = (camp) => {
+        navigate('/payment', { state: { camp } });
     };
 
     const filteredCamps = registeredCamps.filter((camp) => {
@@ -112,22 +118,26 @@ const RegisteredCamps = () => {
                                     {camp.payment_status === 'paid' ? (
                                         <span className="text-green-600 font-medium">Paid</span>
                                     ) : (
-                                        <button className="btn btn-xs btn-warning">Pay</button>
+                                        <button className="btn btn-xs btn-warning" onClick={() => handlePay(camp)}>Pay</button>
                                     )}
                                 </td>
-                                <td className="capitalize">{camp.confirmation_status}</td>
-
                                 <td>
-
                                     {camp.payment_status === 'paid' ? (
-                                        <button className="btn btn-xs btn-info">Feedback</button>
-                                    )
-                                        : <button disabled className="btn btn-xs btn-warning">N/A</button>
-                                    }
+                                        <span className="font-medium">Confirmed</span>
+                                    ) : (
+                                        <span className="font-medium">Pending</span>
+                                    )}
                                 </td>
 
                                 <td>
+                                    {camp.payment_status === 'paid' ? (
+                                        <button className="btn btn-xs btn-info">Feedback</button>
+                                    ) : (
+                                        <button disabled className="btn btn-xs btn-warning">N/A</button>
+                                    )}
+                                </td>
 
+                                <td>
                                     <button
                                         className="btn btn-xs btn-error"
                                         disabled={camp.payment_status === 'paid'}
@@ -136,7 +146,6 @@ const RegisteredCamps = () => {
                                         Cancel
                                     </button>
                                 </td>
-
                             </tr>
                         ))}
                     </tbody>
