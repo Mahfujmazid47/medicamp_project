@@ -20,6 +20,7 @@ https://b11a12-medicamp-site.web.app
 - npm i @tanstack/react-query
 - npm install @headlessui/react
 - npm install @stripe/react-stripe-js @stripe/stripe-js
+- npm i slick-carousel
 -  
 
 

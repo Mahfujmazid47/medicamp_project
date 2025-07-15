@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaStar } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import Loading from '../../../Shared/Loading';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useNavigate } from 'react-router';
+import { Dialog } from '@headlessui/react';
 
 const RegisteredCamps = () => {
     const { user } = useAuth();
@@ -14,6 +15,10 @@ const RegisteredCamps = () => {
     const [search, setSearch] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
+    const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
+    const [selectedCamp, setSelectedCamp] = useState(null);
+    const [feedbackText, setFeedbackText] = useState('');
+    const [rating, setRating] = useState(5);
 
     const { data: registeredCamps = [], isLoading, refetch } = useQuery({
         queryKey: ['registered-camps', user?.email],
@@ -53,7 +58,43 @@ const RegisteredCamps = () => {
     };
 
     const handlePay = (camp) => {
-        navigate('/payment', { state: { camp } });
+        navigate('/dashboard/payment', { state: { camp } });
+    };
+
+    const openFeedbackModal = (camp) => {
+        setSelectedCamp(camp);
+        setIsFeedbackOpen(true);
+    };
+
+    const submitFeedback = async () => {
+        if (!feedbackText || !rating) {
+            Swal.fire('Warning', 'Please fill out all fields.', 'warning');
+            return;
+        }
+
+        const feedbackData = {
+            campId: selectedCamp.campId,
+            campName: selectedCamp.campName,
+            participantEmail: user.email,
+            participantName: user.displayName,
+            participantPhoto: user.photoURL,
+            rating,
+            feedback: feedbackText,
+            date: new Date(),
+        };
+
+        try {
+            const res = await axiosSecure.post('/feedback', feedbackData);
+            console.log(res.data)
+            if (res.data.insertedId) {
+                Swal.fire('Thank you!', 'Your feedback has been submitted.', 'success');
+                setIsFeedbackOpen(false);
+                setFeedbackText('');
+                setRating(5);
+            }
+        } catch (error) {
+            Swal.fire('Error', 'Failed to submit feedback.', 'error',error);
+        }
     };
 
     const filteredCamps = registeredCamps.filter((camp) => {
@@ -75,10 +116,10 @@ const RegisteredCamps = () => {
 
     return (
         <div className="p-4 w-full max-w-7xl mx-auto">
-            <h2 className="text-2xl font-bold mb-4 text-center">Your Registered Camps</h2>
+            <h2 className={`text-2xl font-bold mb-4 text-center  ${isFeedbackOpen && 'opacity-10'}`} >Your Registered Camps</h2>
 
             <div className="flex justify-center mb-4">
-                <div className="flex items-center border rounded">
+                <div className={`flex items-center border rounded  ${isFeedbackOpen && 'opacity-10'}`}>
                     <input
                         type="text"
                         className="input input-sm"
@@ -93,7 +134,7 @@ const RegisteredCamps = () => {
                 </div>
             </div>
 
-            <div className="overflow-x-auto">
+            <div className={`overflow-x-auto ${isFeedbackOpen && 'opacity-10'}`}>
                 <table className="table table-zebra w-full">
                     <thead>
                         <tr className="bg-blue-100">
@@ -118,20 +159,30 @@ const RegisteredCamps = () => {
                                     {camp.payment_status === 'paid' ? (
                                         <span className="text-green-600 font-medium">Paid</span>
                                     ) : (
-                                        <button className="btn btn-xs btn-warning" onClick={() => handlePay(camp)}>Pay</button>
+                                        <button
+                                            className="btn btn-xs btn-warning"
+                                            onClick={() => handlePay(camp)}
+                                        >
+                                            Pay
+                                        </button>
                                     )}
                                 </td>
                                 <td>
                                     {camp.payment_status === 'paid' ? (
                                         <span className="font-medium">Confirmed</span>
                                     ) : (
-                                        <span className="font-medium">Pending</span>
+                                        <button className="font-medium">Pending</button>
                                     )}
                                 </td>
 
                                 <td>
                                     {camp.payment_status === 'paid' ? (
-                                        <button className="btn btn-xs btn-info">Feedback</button>
+                                        <button
+                                            className="btn btn-xs btn-info"
+                                            onClick={() => openFeedbackModal(camp)}
+                                        >
+                                            Feedback
+                                        </button>
                                     ) : (
                                         <button disabled className="btn btn-xs btn-warning">N/A</button>
                                     )}
@@ -163,6 +214,36 @@ const RegisteredCamps = () => {
                     </button>
                 ))}
             </div>
+
+            {/* Feedback Modal */}
+            <Dialog open={isFeedbackOpen} onClose={() => setIsFeedbackOpen(false)} className="fixed z-50 inset-0 overflow-y-auto">
+                <div className="flex items-center justify-center min-h-screen">
+                    <Dialog.Panel className="bg-white rounded-lg p-6 shadow-xl w-full max-w-md">
+                        <Dialog.Title className="text-xl font-semibold mb-4">Leave Feedback for {selectedCamp?.campName}</Dialog.Title>
+                        <textarea
+                            className="textarea textarea-bordered w-full mb-4"
+                            placeholder="Write your feedback..."
+                            rows={4}
+                            value={feedbackText}
+                            onChange={(e) => setFeedbackText(e.target.value)}
+                        ></textarea>
+                        <label className="block mb-2 font-medium">Give Rating:</label>
+                        <div className="flex gap-1 mb-4">
+                            {[1, 2, 3, 4, 5].map((val) => (
+                                <FaStar
+                                    key={val}
+                                    onClick={() => setRating(val)}
+                                    className={`cursor-pointer text-2xl ${val <= rating ? 'text-yellow-400' : 'text-gray-300'}`}
+                                />
+                            ))}
+                        </div>
+                        <div className="flex justify-end gap-2">
+                            <button onClick={() => setIsFeedbackOpen(false)} className="btn btn-outline">Cancel</button>
+                            <button onClick={submitFeedback} className="btn btn-primary">Submit</button>
+                        </div>
+                    </Dialog.Panel>
+                </div>
+            </Dialog>
         </div>
     );
 };

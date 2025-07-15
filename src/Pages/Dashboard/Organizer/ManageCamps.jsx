@@ -91,7 +91,7 @@ const ManageCamps = () => {
     }
 
     return (
-        <div data-aos='zoom-out' duration='2000' className="p-6 w-full max-w-7xl mx-auto">
+        <div data-aos='zoom-out' duration='2000' className="p-6 w-full mx-auto">
             <h2 className="text-2xl font-bold mb-6 text-center">Manage Your Camps</h2>
 
             <div className="flex justify-center mb-4">
@@ -128,7 +128,7 @@ const ManageCamps = () => {
                                     <td>{camp.date}</td>
                                     <td>{camp.location}</td>
                                     <td>{camp.healthcareProfessional}</td>
-                                    <td className="flex flex-wrap gap-2">
+                                    <td className="space-y-1 lg:space-x-1">
                                         <Link to={`/dashboard/update-camp/${camp._id}`}>
                                             <button className="btn btn-sm btn-info text-white"><FaEdit /></button>
                                         </Link>

@@ -17,6 +17,11 @@ import UpdateCamp from '../Pages/Dashboard/Organizer/UpdateCamp';
 import AvailableCamps from '../Pages/AvailableCamps/AvailableCamps/AvailableCamps';
 import CampDetails from '../Pages/CampDetails/CampDetails';
 import RegisteredCamps from '../Pages/Dashboard/Participant/RegisteredCamps';
+import Payment from '../Pages/Dashboard/Participant/Payment';
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from '@stripe/react-stripe-js';
+
+export const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 export const router = createBrowserRouter([
     {
@@ -103,6 +108,14 @@ export const router = createBrowserRouter([
                     </PrivateRoute>
                 )
             },
+            {
+                path: "/dashboard/payment",
+                element: (
+                    <Elements stripe={stripePromise}>
+                        <Payment />
+                    </Elements>
+                )
+            }
         ]
     },
     {
