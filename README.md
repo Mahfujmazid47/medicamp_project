@@ -26,7 +26,7 @@ https://b11a12-medicamp-site.web.app
 
 4. ✅ Real-Time Payment & Confirmation Status
 
-Once payment is successful, status updates to paid and then confirmed automatically
+- Once payment is successful, status updates to paid and then confirmed automatically
 
 5. 🌟 Feedback & Rating System
 
@@ -66,11 +66,11 @@ Once payment is successful, status updates to paid and then confirmed automatica
 
 14. 💻 Responsive UI with Tailwind CSS & DaisyUI
 
-Clean and modern responsive design for mobile and desktop users
+- Clean and modern responsive design for mobile and desktop users
 
 15. 🧠 Modular Codebase with Custom Hooks
 
-Reusable hooks like useAuth, useUserRole, and useAxiosSecure improve code readability and reusability
+- Reusable hooks like useAuth, useUserRole, and useAxiosSecure improve code readability and reusability
 
 16. 🔐 Protected API Endpoints with Firebase Token & Email Verification
 
@@ -99,4 +99,3 @@ Reusable hooks like useAuth, useUserRole, and useAxiosSecure improve code readab
 
 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

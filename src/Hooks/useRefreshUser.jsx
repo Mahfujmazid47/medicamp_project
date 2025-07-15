@@ -7,7 +7,7 @@ const useRefreshUser = () => {
   useEffect(() => {
     if (user) {
       user.reload().then(() => {
-        console.log("User reloaded");
+        // console.log("User reloaded");
       });
     }
   }, [user]);

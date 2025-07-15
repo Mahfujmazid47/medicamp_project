@@ -22,7 +22,7 @@ const Registration = () => {
         const { email, password,name, photo, } = data;
         createUser(email, password)
             .then(async (result) => {
-                console.log(result.user);
+                // console.log(result.user);
                 const user = result.user;
 
                 // ✅ Get Firebase JWT token

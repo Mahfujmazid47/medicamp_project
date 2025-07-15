@@ -9,7 +9,7 @@ const Login = () => {
         const { signIn } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location)
+    // console.log(location)
 
     const { register,
         handleSubmit,
@@ -17,7 +17,7 @@ const Login = () => {
     } = useForm();
 
     const onSubmit = data => {
-        console.log(data);
+        // console.log(data);
         const { email, password } = data;
          signIn(email, password)
         .then(async result => {

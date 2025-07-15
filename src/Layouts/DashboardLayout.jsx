@@ -10,7 +10,7 @@ import useUserRole from '../Hooks/useUserRole';
 const DashboardLayout = () => {
     const navigation = useNavigation();
     const { role, isRoleLoading } = useUserRole();
-    console.log(role, isRoleLoading)
+    // console.log(role, isRoleLoading)
     const navigate = useNavigate();
     const handleReload = () => {
         navigate('/')

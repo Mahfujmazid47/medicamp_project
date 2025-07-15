@@ -80,8 +80,8 @@ const ManageRegisteredCamps = () => {
   if (isLoading || isRoleLoading) return <Loading />;
 
   return (
-    <div className="p-4 w-full max-w-7xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4 text-center">Manage Registered Camps</h2>
+    <div data-aos='fade-up' className="p-4 w-full max-w-7xl mx-auto">
+      <h2 className="text-3xl text-primary font-bold mb-4 text-center">Manage Registered Camps</h2>
 
       <div className="flex justify-end mb-4">
         <input

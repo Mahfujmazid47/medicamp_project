@@ -24,7 +24,7 @@ const ManageCamps = () => {
 
 
     // 🔹 Load camps created by this organizer
-    const { data: camps = [], isLoading } = useQuery({
+    const { data: camps = [], isLoading, refetch } = useQuery({
         queryKey: ['myCamps', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/organizer-camps?email=${user?.email}`);
@@ -61,6 +61,7 @@ const ManageCamps = () => {
         },
         onSuccess: () => {
             queryClient.invalidateQueries(['myCamps']);
+            refetch();
             Swal.fire('Deleted!', 'Camp has been removed.', 'success');
         },
         onError: () => {
@@ -91,8 +92,8 @@ const ManageCamps = () => {
     }
 
     return (
-        <div data-aos='zoom-out' duration='2000' className="p-6 w-full mx-auto">
-            <h2 className="text-2xl font-bold mb-6 text-center">Manage Your Camps</h2>
+        <div data-aos='fade-up' className="p-6 w-full mx-auto">
+            <h2 className="text-3xl text-primary font-bold mb-6 text-center">Manage Your Camps</h2>
 
             <div className="flex justify-center mb-4">
                 <input

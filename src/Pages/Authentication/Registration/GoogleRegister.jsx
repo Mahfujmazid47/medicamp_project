@@ -33,7 +33,7 @@ const GoogleRegister = () => {
                 };
 
                 const userRes = await axiosInstance.post('/users', userInfo);
-                console.log(userRes.data)
+                // console.log(userRes.data)
                 if (userRes.data.upsertedCount) {
                     Swal.fire({
                         position: "center",

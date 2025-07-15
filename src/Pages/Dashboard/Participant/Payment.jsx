@@ -66,7 +66,7 @@ const Payment = () => {
             };
 
             const res = await axiosSecure.post('/payment-success', paymentData);
-            console.log(res.data);
+            // console.log(res.data);
             if (res.data.inserted) {
                 Swal.fire('Success!', `Payment successful. Transaction ID: ${paymentIntent.id}`, 'success');
                 navigate('/dashboard/registered-camps');

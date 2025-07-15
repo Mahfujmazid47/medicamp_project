@@ -12,7 +12,7 @@ const GoogleLogin = () => {
     const handleGoogleLogIn = () => {
         googleSignIn()
             .then(async result => {
-                console.log(result.user);
+                // console.log(result.user);
                 const user = result.user;
                 Swal.fire({
                     position: "center",

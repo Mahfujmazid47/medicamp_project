@@ -2,13 +2,14 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import useAuth from './useAuth'; // তোমার custom hook
+import Swal from 'sweetalert2';
 
 const useAxiosSecure = () => {
     const { logOut } = useAuth();
     const navigate = useNavigate();
 
     const axiosSecure = axios.create({
-        baseURL: 'http://localhost:3000', // 🔁 Adjust to your backend
+         baseURL: import.meta.env.VITE_API_BASE_URL, // 🔁 Adjust to your backend
     });
 
     // Request Interceptor
@@ -29,8 +30,17 @@ const useAxiosSecure = () => {
         error => {
             const status = error.response?.status;
             if (status === 401 || status === 403) {
-                logOut().then(() => {
-                    navigate('/auth/login');
+                Swal.fire({
+                    title: 'Access Denied!',
+                    text: 'Your session has expired or you are not authorized. Please login again.',
+                    icon: 'warning',
+                    confirmButtonText: 'Login',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                }).then(() => {
+                    logOut().then(() => {
+                        navigate('/auth/login');
+                    });
                 });
             }
             return Promise.reject(error);

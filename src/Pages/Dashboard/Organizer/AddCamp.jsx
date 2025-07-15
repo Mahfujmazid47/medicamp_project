@@ -24,9 +24,9 @@ const AddCamp = () => {
     };
 
     try {
-      console.log("Sending camp data:", campInfo);
+      // console.log("Sending camp data:", campInfo);
       const res = await axiosSecure.post('/camps', campInfo);
-      console.log("Response:", res.status, res.data);
+      // console.log("Response:", res.status, res.data);
       if (res.data.insertedId) {
         Swal.fire('Success', 'Camp added successfully!', 'success');
         reset();

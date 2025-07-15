@@ -38,7 +38,7 @@ const UpdateCamp = () => {
     const mutation = useMutation({
         mutationFn: async (updatedCamp) => {
             const res = await axiosSecure.put(`/update-camp/${campId}`, updatedCamp);
-            console.log(res.data);
+            // console.log(res.data);
             return res.data;
         },
         onSuccess: () => {

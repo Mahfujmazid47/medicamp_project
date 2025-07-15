@@ -87,7 +87,7 @@ const RegisteredCamps = () => {
 
         try {
             const res = await axiosSecure.post('/feedback', feedbackData);
-            console.log(res.data)
+            // console.log(res.data)
             if (res.data.insertedId) {
                 Swal.fire('Thank you!', 'Your feedback has been submitted.', 'success');
                 setIsFeedbackOpen(false);
@@ -117,8 +117,8 @@ const RegisteredCamps = () => {
     if (isLoading || isRoleLoading) return <Loading />;
 
     return (
-        <div className="p-4 w-full max-w-7xl mx-auto">
-            <h2 className={`text-2xl font-bold mb-4 text-center  ${isFeedbackOpen && 'opacity-10'}`} >Your Registered Camps</h2>
+        <div data-aos='fade-up' className="p-4 w-full max-w-7xl mx-auto">
+            <h2 className={`text-3xl text-primary font-bold mb-4 text-center  ${isFeedbackOpen && 'opacity-10'}`} >Your Registered Camps</h2>
 
             <div className={`flex justify-center mb-4  ${isFeedbackOpen && 'opacity-10'}`}>
 

@@ -6,7 +6,7 @@ import Footer from '../Shared/Footer';
 
 const RootLayout = () => {
     const navigation = useNavigation();
-    console.log(navigation)
+    // console.log(navigation)
     return (
         <>
             <nav>
@@ -15,7 +15,7 @@ const RootLayout = () => {
 
             <main>
                 <Suspense fallback={<Loading />}>
-                {navigation.state === 'loading' ? <Loading /> : <Outlet></Outlet>}
+                    {navigation.state === 'loading' ? <Loading /> : <Outlet></Outlet>}
                 </Suspense>
             </main>
 

@@ -4,6 +4,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { FaStar } from 'react-icons/fa';
+import Loading from '../../../Shared/Loading';
 
 const FeedbackCarousel = () => {
   const axiosSecure = useAxiosSecure();
@@ -16,7 +17,7 @@ const FeedbackCarousel = () => {
     },
   });
 
-  if (isLoading) return <p className="text-center py-10">Loading Feedback...</p>;
+  if (isLoading) return <Loading />;
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10 md:py-20">
