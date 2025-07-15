@@ -2,6 +2,7 @@ import React from 'react';
 import Banner from '../Banner/Banner';
 import PopularCamps from '../PopularCamps/PopularCamps';
 import FeedbackCarousel from '../FeedbackCarousel/FeedbackCarousel';
+import ParticipantFeatures from '../ParticipantFeatures/ParticipantFeatures';
 
 const Home = () => {
     return (
@@ -19,6 +20,13 @@ const Home = () => {
             <section>
                 <FeedbackCarousel></FeedbackCarousel>
             </section>
+            
+            {/* ParticipantFeatures  */}
+            <section>
+                <ParticipantFeatures></ParticipantFeatures>
+            </section>
+
+
         </>
     );
 };

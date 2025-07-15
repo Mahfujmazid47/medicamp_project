@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router';
 import useAxios from '../../../Hooks/useAxios';
 import Loading from '../../../Shared/Loading';
+import { FaArrowRight } from 'react-icons/fa';
 
 
 const PopularCamps = () => {
@@ -39,7 +40,7 @@ const PopularCamps = () => {
                             <p><strong>Participants: <span className='badge badge-primary'>{camp.participantCount}</span></strong></p>
 
                             <Link className='flex items-end justify-end' to={`/camp-details/${camp._id}`}>
-                                <button className="btn hover:scale-110 transition btn-primary mt-3">Details</button>
+                                <button className="btn hover:scale-110 transition btn-primary mt-3">Details <FaArrowRight /></button>
                             </Link>
                         </div>
 
@@ -49,7 +50,7 @@ const PopularCamps = () => {
 
             <div className="flex justify-center mt-8">
                 <Link to="/available-camps">
-                    <button className="btn btn-primary px-6">See All Camps</button>
+                    <button className="btn btn-primary hover:scale-110 transition px-6">See All Camps <FaArrowRight /></button>
                 </Link>
             </div>
         </section>

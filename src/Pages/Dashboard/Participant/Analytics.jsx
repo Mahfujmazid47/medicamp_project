@@ -26,7 +26,7 @@ const Analytics = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
+    <div className="p-6 w-full max-w-5xl mx-auto">
       <h2 className="text-2xl font-bold text-center mb-6">Camp Analytics</h2>
 
       {chartData.length === 0 ? (

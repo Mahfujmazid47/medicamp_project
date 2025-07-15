@@ -1,13 +1,24 @@
 import React from 'react';
 import SiteLogo from './SiteLogo';
+import { NavLink, useNavigate } from 'react-router';
 
 const Footer = () => {
+    const navigate = useNavigate()
+    const handleReload = () => {
+        navigate('/')
+        window.location.reload();
+    }
     return (
         <div className='mt-14'>
-            <footer className="footer footer-horizontal footer-center bg-blue-300 text-black p-10 rounded-t-2xl">
+            <footer className="footer footer-horizontal footer-center bg-primary text-white p-10 rounded-t-2xl">
                 <aside>
                     <div>
-                        <SiteLogo />
+                        <NavLink onClick={handleReload} to='/'>
+                            <div className='flex items-center hover:scale-105 transition-all w-fit'>
+                                <img className='mb-1 h-12 w-12' src="https://img.icons8.com/?size=160&id=YKmWcwT48liT&format=png" alt="" />
+                                <p className='-ml-2 md:ml-0 md:mb-1 mb-2 text-2xl md:text-3xl font-extrabold'>MediCamp</p>
+                            </div>
+                        </NavLink>
                     </div>
                     <p className="font-bold">
                         Medical Camp Management System

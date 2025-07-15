@@ -26,27 +26,27 @@ const FeedbackCarousel = () => {
         showStatus={false}
         infiniteLoop
         autoPlay
-        interval={5000}
+        interval={3000}
         showArrows={true}
         swipeable={true}
         dynamicHeight={false}
       >
         {feedbacks.map((fb) => (
-          <div data-aos="fade-up" key={fb._id} className="flex flex-col items-center gap-4 bg-white rounded-lg p-6 shadow-md">
+          <div data-aos="fade-up" key={fb._id} className="flex flex-col items-center gap-4 bg-primary text-white p-6 rounded-2xl">
             <img
               src={fb.participantPhoto}
               alt={fb.participantName}
-              className="w-20 h-20 rounded-full object-contain border border-blue-200"
+              className="w-20 h-20 rounded-full object-contain"
             />
             <h3 className="text-xl font-semibold">{fb.participantName}</h3>
-            <p className="text-sm text-gray-500">{fb.participantEmail}</p>
-            <h3 className="text-xl font-semibold">Camp: {fb.campName}</h3>
+            <p className="text-sm font-semibold text-gray-800">{fb.participantEmail}</p>
+            <h3 className="text-xl font-semibold">Camp : {fb.campName}</h3>
             <div className="flex text-yellow-400">
               {[...Array(fb.rating)].map((_, i) => (
                 <FaStar key={i} />
               ))}
             </div>
-            <p className="text-gray-700 italic text-center mb-4 max-w-xl">“{fb.feedback}”</p>
+            <p className="text-white font-medium italic text-center mb-4 max-w-xl">“{fb.feedback}”</p>
           </div>
         ))}
       </Carousel>

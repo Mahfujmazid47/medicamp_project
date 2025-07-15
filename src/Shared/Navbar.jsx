@@ -69,7 +69,7 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <div>
+                <div className='text-black'>
                     <SiteLogo></SiteLogo>
                 </div>
             </div>
@@ -101,7 +101,7 @@ const Navbar = () => {
 
                                     <li className='font-bold mx-auto text-lg'>{user.displayName}</li>
 
-                                    <li><NavLink to='/dashboard' className="btn hover:scale-103 transition p-2 md:p-4 text-white bg-blue-300">Dashboard</NavLink></li>
+                                    <li><NavLink to='/dashboard' className="btn hover:scale-103 transition p-2 md:p-4 text-white bg-primary">Dashboard</NavLink></li>
 
                                     <li><button onClick={handleLogout} className="btn hover:scale-103 transition bg-primary border-2 p-2 md:p-4 text-white">Logout</button></li>
                                 </ul>
@@ -109,7 +109,7 @@ const Navbar = () => {
                         </>
                         :
                         <>
-                            <NavLink to='/auth/login' className="btn border-blue-100 p-2 md:p-4 border-2 text-blue-400 bg-white">Join Us</NavLink>
+                            <NavLink to='/auth/login' className="btn border-primary p-2 md:p-4 border-2 text-primary bg-white">Join Us</NavLink>
                         </>
                 }
             </div>

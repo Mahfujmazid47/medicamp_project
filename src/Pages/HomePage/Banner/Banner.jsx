@@ -25,13 +25,13 @@ const slides = [
 
 const Banner = () => {
     return (
-        <div data-aos='zoom-in' duration='4000' className="mt-6 max-w-7xl mx-auto">
+        <div data-aos='zoom-in' className="mt-6 max-w-7xl mx-auto">
             <Carousel
                 autoPlay
                 infiniteLoop
                 showThumbs={false}
                 showStatus={false}
-                interval={2000}
+                interval={3000}
                 showArrows
                 emulateTouch
             >
@@ -47,7 +47,7 @@ const Banner = () => {
                         ></div>
 
                         {/* Overlay Content */}
-                        <div className="relative z-10 h-full flex flex-col items-start justify-center text-left px-8 md:px-20 text-white">
+                        <div data-aos="fade-left" className="relative z-10 h-full flex flex-col items-start justify-center text-left px-8 md:px-20 text-white">
                             <h2 className="text-3xl md:text-5xl font-bold mb-4">{slide.title}</h2>
                             <p className="text-md md:text-lg max-w-2xl">{slide.description}</p>
                         </div>
