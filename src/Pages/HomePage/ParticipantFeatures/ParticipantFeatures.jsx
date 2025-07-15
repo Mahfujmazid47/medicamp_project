@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { FaChartPie, FaUserCircle, FaClipboardList, FaMoneyCheckAlt } from 'react-icons/fa';
 
 const features = [
@@ -26,31 +25,32 @@ const features = [
 
 const ParticipantFeatures = () => {
     return (
-        <section className="bg-blue-50 py-12 px-4 md:px-8 w-full md:w-10/12 mx-auto rounded-2xl">
+        <section className="bg-blue-50 py-12 px-4 md:px-8 w-full md:w-10/12 mx-auto rounded-2xl hover:shadow-2xl transition-all duration-300 ease-in-out">
             <div className="max-w-7xl mx-auto text-center">
                 <h2 className="text-3xl text-blue-400 md:text-4xl font-bold mb-4">What Our Participants Can Do</h2>
                 <p className="text-gray-600 mb-10">Empowering participants with tools to manage, track, and enjoy their healthcare experience.</p>
 
                 <figure className='flex justify-center items-center my-14'>
-                    <img data-aos='fade-up'
+                    <img data-aos='fade-up' data-aos-duration="2000"
                         className='w-96'
                         src="https://i.postimg.cc/mrDVZmPj/biopharmacology-products-abstract-concept-vector-illustration-107173-29450-removebg-preview.png" alt="" />
                 </figure>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                     {features.map((feature, idx) => (
-                        <motion.div
+                        <div
                             key={idx}
-                            whileHover={{ scale: 1.05 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            initial={{ opacity: 0, y: 30 }}
-                            transition={{ duration: 0.4 }}
-                            className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center"
+                            data-aos="fade-up"
+                            // whileHover={{ scale: 1.05 }}
+                            // whileInView={{ opacity: 1, y: 0 }}
+                            // initial={{ opacity: 0, y: 30 }}
+                            // transition={{ duration: 0.4 }}
+                            className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:scale-105 transition-all duration-300 ease-in-out hover:shadow-2xl"
                         >
                             {feature.icon}
                             <h3 className="text-lg font-semibold mt-4 mb-2">{feature.title}</h3>
                             <p className="text-sm text-gray-500">{feature.description}</p>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

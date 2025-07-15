@@ -4,16 +4,18 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGri
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import Loading from '../../../Shared/Loading';
+import useUserRole from '../../../Hooks/useUserRole';
 
 const Analytics = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const {role, isRoleLoading} = useUserRole();
 
   const { data: registeredCamps = [], isLoading } = useQuery({
     queryKey: ['analytics-camps', user?.email],
     enabled: !!user?.email,
     queryFn: async () => {
-      const res = await axiosSecure.get(`/register-camp?email=${user.email}`);
+      const res = await axiosSecure.get(`/register-camp?email=${user.email}&role=${role}`);
       return res.data;
     },
   });
@@ -23,7 +25,7 @@ const Analytics = () => {
     fees: parseFloat(camp.campFees),
   }));
 
-  if (isLoading) return <Loading />;
+  if (isLoading || isRoleLoading) return <Loading />;
 
   return (
     <div className="p-6 w-full max-w-5xl mx-auto">

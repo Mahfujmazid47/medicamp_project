@@ -1,6 +1,9 @@
 # MediCamp
 A Medical Camp Management System (MCMS) using the MERN stack. This system helps the Organizer, and Participants easily manage and coordinate medical camps.
 
+## Organizer Gmail and Password :-
+- Gmail : mahfujmazid47@gmail.com
+- Password : 123456
 
 ## Live site Link:-
 https://b11a12-medicamp-site.web.app

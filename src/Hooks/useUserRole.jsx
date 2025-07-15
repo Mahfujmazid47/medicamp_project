@@ -15,7 +15,7 @@ const useUserRole = () => {
     }
   });
 
-  return { role: roleData || 'participant', isRoleLoading, refetch };
+  return { role: roleData , isRoleLoading, refetch };
 };
 
 export default useUserRole;

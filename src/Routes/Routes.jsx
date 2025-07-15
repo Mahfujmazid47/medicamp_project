@@ -22,6 +22,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from '@stripe/react-stripe-js';
 import PaymentHistory from '../Pages/Dashboard/Participant/PaymentHistory';
 import Analytics from '../Pages/Dashboard/Participant/Analytics';
+import ManageRegisteredCamps from '../Pages/Dashboard/Organizer/ManageRegisteredCamps';
 
 export const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
@@ -131,6 +132,14 @@ export const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <Analytics></Analytics>
+                    </PrivateRoute>
+                )
+            },
+            {
+                path: "/dashboard/manage-registered",
+                element: (
+                    <PrivateRoute>
+                        <ManageRegisteredCamps></ManageRegisteredCamps>
                     </PrivateRoute>
                 )
             },

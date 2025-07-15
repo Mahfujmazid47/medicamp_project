@@ -7,6 +7,7 @@ import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useNavigate } from 'react-router';
 import { Dialog } from '@headlessui/react';
+import useUserRole from '../../../Hooks/useUserRole';
 
 const RegisteredCamps = () => {
     const { user } = useAuth();
@@ -19,12 +20,13 @@ const RegisteredCamps = () => {
     const [selectedCamp, setSelectedCamp] = useState(null);
     const [feedbackText, setFeedbackText] = useState('');
     const [rating, setRating] = useState(5);
+    const {role, isRoleLoading} = useUserRole();
 
     const { data: registeredCamps = [], isLoading, refetch } = useQuery({
         queryKey: ['registered-camps', user?.email],
         enabled: !!user?.email,
         queryFn: async () => {
-            const res = await axiosSecure.get(`/register-camp?email=${user.email}`);
+            const res = await axiosSecure.get(`/register-camp?email=${user.email}&role=${role}`);
             return res.data;
         },
     });
@@ -112,7 +114,7 @@ const RegisteredCamps = () => {
         currentPage * itemsPerPage
     );
 
-    if (isLoading) return <Loading />;
+    if (isLoading || isRoleLoading) return <Loading />;
 
     return (
         <div className="p-4 w-full max-w-7xl mx-auto">

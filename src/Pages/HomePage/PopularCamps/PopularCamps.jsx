@@ -50,7 +50,7 @@ const PopularCamps = () => {
 
             <div className="flex justify-center mt-8">
                 <Link to="/available-camps">
-                    <button className="btn btn-primary hover:scale-110 transition px-6">See All Camps <FaArrowRight /></button>
+                    <button data-aos="fade-up" className="btn btn-primary hover:scale-110 transition px-6">See All Camps <FaArrowRight /></button>
                 </Link>
             </div>
         </section>
