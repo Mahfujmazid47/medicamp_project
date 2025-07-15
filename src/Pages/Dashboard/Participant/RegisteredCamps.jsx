@@ -118,20 +118,19 @@ const RegisteredCamps = () => {
         <div className="p-4 w-full max-w-7xl mx-auto">
             <h2 className={`text-2xl font-bold mb-4 text-center  ${isFeedbackOpen && 'opacity-10'}`} >Your Registered Camps</h2>
 
-            <div className="flex justify-center mb-4">
-                <div className={`flex items-center border rounded  ${isFeedbackOpen && 'opacity-10'}`}>
+            <div className={`flex justify-center mb-4  ${isFeedbackOpen && 'opacity-10'}`}>
+
                     <input
                         type="text"
-                        className="input input-sm"
-                        placeholder="Search..."
+                        className="input input-sm w-full md:w-1/2"
+                        placeholder="Search by Camp Name..."
                         value={search}
                         onChange={(e) => {
                             setSearch(e.target.value);
                             setCurrentPage(1);
                         }}
                     />
-                    <FaSearch className="ml-2 mr-2 text-gray-500" />
-                </div>
+
             </div>
 
             <div className={`overflow-x-auto ${isFeedbackOpen && 'opacity-10'}`}>

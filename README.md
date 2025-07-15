@@ -21,6 +21,7 @@ https://b11a12-medicamp-site.web.app
 - npm install @headlessui/react
 - npm install @stripe/react-stripe-js @stripe/stripe-js
 - npm i slick-carousel
+- npm install recharts
 -  
 
 

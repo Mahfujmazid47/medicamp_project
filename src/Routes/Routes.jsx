@@ -20,6 +20,8 @@ import RegisteredCamps from '../Pages/Dashboard/Participant/RegisteredCamps';
 import Payment from '../Pages/Dashboard/Participant/Payment';
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from '@stripe/react-stripe-js';
+import PaymentHistory from '../Pages/Dashboard/Participant/PaymentHistory';
+import Analytics from '../Pages/Dashboard/Participant/Analytics';
 
 export const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
@@ -115,7 +117,23 @@ export const router = createBrowserRouter([
                         <Payment />
                     </Elements>
                 )
-            }
+            },
+            {
+                path: "/dashboard/payment-history",
+                element: (
+                    <PrivateRoute>
+                        <PaymentHistory></PaymentHistory>
+                    </PrivateRoute>
+                )
+            },
+            {
+                path: "/dashboard/analytics",
+                element: (
+                    <PrivateRoute>
+                        <Analytics></Analytics>
+                    </PrivateRoute>
+                )
+            },
         ]
     },
     {
