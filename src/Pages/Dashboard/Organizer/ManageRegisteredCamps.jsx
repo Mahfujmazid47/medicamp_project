@@ -37,8 +37,9 @@ const ManageRegisteredCamps = () => {
   });
 
   const cancelMutation = useMutation({
-    mutationFn: async (id) => {
+    mutationFn: async ({ id, campId }) => {
       await axiosSecure.delete(`/register-camp/${id}`);
+      await axiosSecure.patch(`/camps/decrement/${campId}`);
     },
     onSuccess: () => {
       Swal.fire('Cancelled!', 'Registration has been removed.', 'success');
@@ -49,7 +50,7 @@ const ManageRegisteredCamps = () => {
     },
   });
 
-  const handleCancel = (id, paymentStatus, confirmationStatus) => {
+  const handleCancel = (id, paymentStatus, confirmationStatus, campId) => {
     if (paymentStatus === 'paid' && confirmationStatus === 'confirmed') return;
 
     Swal.fire({
@@ -60,7 +61,7 @@ const ManageRegisteredCamps = () => {
       confirmButtonText: 'Yes, cancel it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        cancelMutation.mutate(id);
+        cancelMutation.mutate({ id, campId });
       }
     });
   };
@@ -133,7 +134,7 @@ const ManageRegisteredCamps = () => {
                   <button
                     className="btn btn-xs btn-error"
                     disabled={camp.payment_status === 'paid' && camp.confirmation_status === 'confirmed'}
-                    onClick={() => handleCancel(camp._id, camp.payment_status, camp.confirmation_status)}
+                    onClick={() => handleCancel(camp._id, camp.payment_status, camp.confirmation_status,camp.campId)}
                   >
                     Cancel
                   </button>

@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import Loading from '../../Shared/Loading';
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
+import useUserRole from '../../Hooks/useUserRole';
 
 const CampDetails = () => {
   const { campId } = useParams();
@@ -14,6 +15,7 @@ const CampDetails = () => {
   const { user } = useAuth();
   const queryClient = useQueryClient();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const {role, isRoleLoading} = useUserRole();
 
   const { data: camp, isLoading } = useQuery({
     queryKey: ['campDetails', campId],
@@ -74,7 +76,7 @@ const CampDetails = () => {
     }
   };
 
-  if (isLoading) return <Loading />;
+  if (isLoading || isRoleLoading) return <Loading />;
 
   return (
     <div data-aos='zoom-out' duration='2000' className="max-w-3xl border-t border-gray-300 mx-auto p-6 shadow-lg rounded-2xl my-10">
@@ -88,7 +90,7 @@ const CampDetails = () => {
       <p><strong>Participants: <span className='badge badge-primary'>{camp.participantCount}</span></strong></p>
       <p className="mb-4"><strong>Description:</strong> {camp.description}</p>
 
-      <button onClick={() => setIsModalOpen(true)} className="btn btn-primary">Join Camp</button>
+      <button onClick={() => setIsModalOpen(true)} disabled={role === 'organizer'} className="btn btn-primary">{role === 'participant' ? 'Join Camp' : 'Organizer Cannot Join'}</button>
 
       {/* Modal with Headless UI */}
       <Transition appear show={isModalOpen} as={Fragment}>
