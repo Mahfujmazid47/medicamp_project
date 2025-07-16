@@ -3,27 +3,12 @@ import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { useNavigate } from 'react-router';
 
-// Main NoCamps component representing the "No Camps" page
+
 const NoRegisteredCamps = () => {
     const navigate = useNavigate();
   return (
-    // Outer container for the entire page, ensuring full height and centering content
-    // Uses Tailwind CSS for styling:
-    // - min-h-screen: Ensures the container takes at least the full viewport height
-    // - bg-base-200: Sets a background color from DaisyUI's theme
-    // - flex, items-center, justify-center: Centers the content vertically and horizontally
-    // - p-4: Adds padding on all sides for responsiveness
-    <div className="min-h-screen bg-base-200 flex items-center justify-center p-4">
-      {/*
-        DaisyUI Card component for a prominent display of the message.
-        It provides a structured layout for content.
-        - max-w-md: Limits the maximum width of the card for better readability on large screens
-        - text-center: Centers the text content within the card
-        - bg-base-100: Sets a lighter background for the card
-        - shadow-xl: Adds a large shadow for depth
-        - rounded-box: Applies rounded corners
-        - p-8: Adds internal padding
-      */}
+    <div className="min-h-screen flex items-center justify-center p-4">
+
       <div className="card max-w-md text-center bg-base-100 shadow-xl rounded-box p-8">
         <div className="card-body items-center text-center">
           {/*

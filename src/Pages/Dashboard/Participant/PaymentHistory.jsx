@@ -4,6 +4,7 @@ import { FaSearch } from 'react-icons/fa';
 import Loading from '../../../Shared/Loading';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+import NoRegisteredCamps from './NoRegisteredCamps';
 
 const PaymentHistory = () => {
   const { user } = useAuth();
@@ -36,22 +37,28 @@ const PaymentHistory = () => {
   );
 
   if (isLoading) return <Loading />;
+  
+  if (paginatedPayments.length < 1) {
+    return <div className='flex items-center justify-center h-screen'>
+      <p className="text-center text-3xl font-bold text-gray-500">You did not pay for a camp yet.</p>
+    </div>
+  }
 
   return (
     <div data-aos='fade-up' className="p-4 w-full max-w-7xl mx-auto">
       <h2 className="text-3xl text-primary font-bold mb-4 text-center">Your Payment History</h2>
 
       <div className="flex justify-center mb-4">
-          <input
-            type="text"
-            className="input input-sm w-full md:w-1/2"
-            placeholder="Search by Camp or Transaction ID..."
-            value={search}
-            onChange={(e) => {
-              setSearch(e.target.value);
-              setCurrentPage(1);
-            }}
-          />
+        <input
+          type="text"
+          className="input input-sm w-full md:w-1/2"
+          placeholder="Search by Camp or Transaction ID..."
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setCurrentPage(1);
+          }}
+        />
       </div>
 
       <div className="overflow-x-auto">

@@ -8,6 +8,7 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useNavigate } from 'react-router';
 import { Dialog } from '@headlessui/react';
 import useUserRole from '../../../Hooks/useUserRole';
+import NoRegisteredCamps from './NoRegisteredCamps';
 
 const RegisteredCamps = () => {
     const { user } = useAuth();
@@ -115,6 +116,8 @@ const RegisteredCamps = () => {
     );
 
     if (isLoading || isRoleLoading) return <Loading />;
+
+    if(paginatedCamps.length < 1) return <NoRegisteredCamps />;
 
     return (
         <div data-aos='fade-up' className="p-4 w-full max-w-7xl mx-auto">

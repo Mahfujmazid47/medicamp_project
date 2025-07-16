@@ -58,7 +58,7 @@ const AvailableCamps = () => {
         >
           <option value="">Sort By</option>
           <option value="mostRegistered">Most Registered</option>
-          <option value="fees">Camp Fees</option>
+          <option value="fees">Camp Fees(low to high)</option>
           <option value="name">A-Z (Camp Name)</option>
         </select>
 
