@@ -47,7 +47,7 @@ const Banner = () => {
                         ></div>
 
                         {/* Overlay Content */}
-                        <div data-aos="fade-left" data-aos-duration="2500" className="relative z-10 h-full flex flex-col items-start justify-center text-left px-8 md:px-20 text-white">
+                        <div data-aos="fade-up" data-aos-duration="2500" className="relative z-10 h-full flex flex-col items-start justify-center text-left px-8 md:px-20 text-white">
                             <h2 className="text-3xl md:text-5xl font-bold mb-4">{slide.title}</h2>
                             <p className="text-md md:text-lg max-w-2xl">{slide.description}</p>
                         </div>

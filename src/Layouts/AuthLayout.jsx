@@ -21,7 +21,7 @@ const AuthLayout = () => {
                     </section>
                 </div>
 
-                <figure data-aos='fade-left' className='flex-1 flex justify-center items-center'>
+                <figure data-aos='fade-up' className='flex-1 flex justify-center items-center'>
                     <img
                         src="https://img.freepik.com/free-vector/patient-being-examined-by-doctor-clinic-illustration_23-2148865216.jpg"
                         className="md:max-w-lg rounded-lg flex justify-center items-center"

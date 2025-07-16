@@ -54,7 +54,7 @@ const Login = () => {
     }
 
     return (
-        <div data-aos='fade-right' className='md:w-2/3 w-11/12'>
+        <div data-aos='fade-up' className='md:w-2/3 w-11/12'>
             <div className="">
                 <h1 className="text-3xl font-extrabold">Join Us </h1>
                 <p className="py-3">
