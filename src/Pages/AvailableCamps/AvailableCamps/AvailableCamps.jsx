@@ -28,8 +28,10 @@ const AvailableCamps = () => {
 
     if (sortOption === 'mostRegistered') {
       filtered = filtered.sort((a, b) => b.participantCount - a.participantCount);
-    } else if (sortOption === 'fees') {
+    } else if (sortOption === 'feesLow') {
       filtered = filtered.sort((a, b) => a.fees - b.fees);
+    } else if (sortOption === 'feesHigh') {
+      filtered = filtered.sort((a, b) => b.fees - a.fees);
     } else if (sortOption === 'name') {
       filtered = filtered.sort((a, b) => a.campName.localeCompare(b.campName));
     }
@@ -41,8 +43,11 @@ const AvailableCamps = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-6">
-      <h2 data-aos='fade-up' className="text-3xl md:text-4xl font-bold mb-10 text-primary/70 text-center">Available Medical Camps</h2>
+      <h2 data-aos='fade-up' className="text-3xl md:text-4xl font-bold mb-10 text-primary/70 text-center">
+        Available Medical Camps
+      </h2>
 
+      {/* Search & Filters */}
       <div data-aos='fade-up' data-aos-delay="100" className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
         <input
           type="text"
@@ -59,7 +64,8 @@ const AvailableCamps = () => {
         >
           <option value="">Sort By</option>
           <option value="mostRegistered">Most Registered</option>
-          <option value="fees">Camp Fees(low to high)</option>
+          <option value="feesLow">Camp Fees (Low to High)</option>
+          <option value="feesHigh">Camp Fees (High to Low)</option>
           <option value="name">A-Z (Camp Name)</option>
         </select>
 
@@ -71,27 +77,32 @@ const AvailableCamps = () => {
         </button>
       </div>
 
+      {/* Camps List */}
       <div data-aos='fade-up' data-aos-delay="300" className={`grid gap-6 ${columnCount === 3 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 md:grid-cols-2'}`}>
         {filteredAndSortedCamps.map(camp => (
           <div data-aos='fade-up' key={camp._id} className="card bg-base-100 shadow-xl">
-            <figure><img src={camp.image} alt={camp.campName} className="h-48 w-full object-cover" /></figure>
+            <figure>
+              <img src={camp.image} alt={camp.campName} className="h-48 w-full object-cover" />
+            </figure>
             <div className="card-body">
               <h2 className="card-title">{camp.campName}</h2>
-              {/* <p><strong>Fees:</strong> ${camp.fees}</p> */}
+              <p><strong>Fees:</strong> ${camp.fees}</p>
               <p><strong>Date & Time:</strong> {camp.date}, {camp.time}</p>
               <p><strong>Location:</strong> {camp.location}</p>
-              {/* <p><strong>Doctor:</strong> {camp.healthcareProfessional}</p> */}
-              <p><strong>Participants: <span className='badge text-white bg-primary/70'>{camp.participantCount}</span></strong></p>
-              {/* <p>{camp.description.slice(0, 80)}...</p> */}
+              <p>
+                <strong>Participants: </strong>
+                <span className='badge text-white bg-primary/70'>{camp.participantCount}</span>
+              </p>
               <div className="card-actions mt-2 justify-end">
-                <Link to={`/camp-details/${camp._id}`} className="btn hover:scale-110 transition bg-primary/70 text-white">Details <FaArrowRight /></Link>
+                <Link to={`/camp-details/${camp._id}`} className="btn hover:scale-110 transition bg-primary/70 text-white">
+                  Details <FaArrowRight />
+                </Link>
               </div>
             </div>
           </div>
         ))}
       </div>
-      </div>
-
+    </div>
   );
 };
 
