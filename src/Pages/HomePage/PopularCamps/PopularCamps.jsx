@@ -25,7 +25,7 @@ const PopularCamps = () => {
 
     return (
         <section className="my-12 md:my-24 px-4 md:px-8 max-w-7xl mx-auto">
-            <h2 data-aos='fade-up' duration='3000' className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-14 text-primary">Popular Medical Camps</h2>
+            <h2 data-aos='fade-up' duration='3000' className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-14 text-primary/70">Popular Medical Camps</h2>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {popularCamps.map((camp) => (
@@ -37,10 +37,10 @@ const PopularCamps = () => {
                             <p><strong>Date & Time:</strong> {camp.date} at {camp.time}</p>
                             <p><strong>Location:</strong> {camp.location}</p>
                             <p><strong>Doctor:</strong> {camp.healthcareProfessional}</p>
-                            <p><strong>Participants: <span className='badge badge-primary'>{camp.participantCount}</span></strong></p>
+                            <p><strong>Participants: <span className='badge bg-primary/70 text-white'>{camp.participantCount}</span></strong></p>
 
                             <Link className='flex items-end justify-end' to={`/camp-details/${camp._id}`}>
-                                <button className="btn hover:scale-110 transition btn-primary mt-3">Details <FaArrowRight /></button>
+                                <button className="btn hover:scale-110 transition bg-primary/70 text-white mt-3">Details <FaArrowRight /></button>
                             </Link>
                         </div>
 
@@ -48,9 +48,9 @@ const PopularCamps = () => {
                 ))}
             </div>
 
-            <div className="flex justify-center mt-8">
+            <div data-aos="fade-up" className="flex justify-center mt-8">
                 <Link to="/available-camps">
-                    <button data-aos="fade-up" className="btn btn-primary hover:scale-110 transition px-6">See All Camps <FaArrowRight /></button>
+                    <button  className="btn bg-primary/70 text-white hover:scale-110 transition px-6">See All Camps <FaArrowRight /></button>
                 </Link>
             </div>
         </section>

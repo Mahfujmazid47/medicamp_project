@@ -81,7 +81,7 @@ const CampDetails = () => {
   return (
     <div className='pb-10'>
       <h1 className='text-3xl font-bold max-w-3xl mx-auto text-primary/70 py-6'>Camp Details </h1>
-      <div data-aos='zoom-out' duration='2000' className="bg-base-100 max-w-3xl  mx-auto p-6 shadow-lg rounded-2xl py-10">
+      <div data-aos='zoom-out' duration='2000' className="bg-base-100 max-w-3xl  mx-auto p-6 shadow-lg rounded-2xl py-5">
         <img src={camp.image} alt={camp.campName} className="w-full h-64 object-cover rounded mb-4" />
         <h2 className="text-3xl font-bold mb-2 text-primary/70">{camp.campName}</h2>
         <p className="mb-1"><strong>Fees:</strong> ${camp.fees}</p>
@@ -121,7 +121,7 @@ const CampDetails = () => {
                   leaveTo="opacity-0 scale-95"
                 >
                   <Dialog.Panel className="w-full max-w-lg transform overflow-hidden rounded-2xl bg-base-100 p-6 text-left align-middle shadow-xl transition-all">
-                    <Dialog.Title as="h3" className="text-2xl font-medium leading-6 text-gray-900">
+                    <Dialog.Title as="h3" className="text-2xl font-medium leading-6">
                       Register for Camp
                     </Dialog.Title>
                     <form onSubmit={handleJoinCamp} className="mt-4 grid grid-cols-1 gap-3">

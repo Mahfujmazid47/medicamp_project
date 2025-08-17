@@ -29,7 +29,7 @@ const ErrorPage = () => {
 
 
           <button
-              className="btn btn-outline hover:text-white btn-primary btn-wide btn-lg rounded-full flex items-center justify-center"
+              className="btn btn-outline hover:text-white hover:bg-primary/70 text-primary/70 btn-wide btn-lg rounded-full flex items-center justify-center"
               onClick={() => window.history.back()}
             >
               {/* SVG icon for a left arrow */}
@@ -41,7 +41,7 @@ const ErrorPage = () => {
 
 
           <button
-            className="btn btn-primary text-white btn-wide btn-lg rounded-full"
+            className="btn bg-primary/70 text-white btn-wide btn-lg rounded-full"
             onClick={() => window.location.href = '/'} // Redirects to the root path
           >
             Go to Home

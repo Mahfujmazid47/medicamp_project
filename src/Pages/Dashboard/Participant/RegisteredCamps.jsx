@@ -121,7 +121,7 @@ const RegisteredCamps = () => {
 
     return (
         <div data-aos='fade-up' className="p-4 w-full max-w-7xl mx-auto">
-            <h2 className={`text-3xl text-primary font-bold mb-4 text-center  ${isFeedbackOpen && 'opacity-10'}`} >Your Registered Camps</h2>
+            <h2 className={`text-3xl text-primary/70 font-bold mb-4 text-center  ${isFeedbackOpen && 'opacity-10'}`} >Your Registered Camps</h2>
 
             <div className={`flex justify-center mb-4  ${isFeedbackOpen && 'opacity-10'}`}>
 
@@ -141,7 +141,7 @@ const RegisteredCamps = () => {
             <div className={`overflow-x-auto ${isFeedbackOpen && 'opacity-10'}`}>
                 <table className="table table-zebra w-full">
                     <thead>
-                        <tr className="bg-blue-100">
+                        <tr className="bg-primary/30">
                             <th>#</th>
                             <th>Camp Name</th>
                             <th>Camp Fees</th>
@@ -212,7 +212,7 @@ const RegisteredCamps = () => {
                     <button
                         key={i}
                         onClick={() => setCurrentPage(i + 1)}
-                        className={`btn btn-sm ${currentPage === i + 1 ? 'btn-primary' : 'btn-outline'}`}
+                        className={`btn btn-sm ${currentPage === i + 1 ? 'btn bg-primary/70 text-white' : 'btn-outline outline-primary/70'}`}
                     >
                         {i + 1}
                     </button>
@@ -243,7 +243,7 @@ const RegisteredCamps = () => {
                         </div>
                         <div className="flex justify-end gap-2">
                             <button onClick={() => setIsFeedbackOpen(false)} className="btn btn-outline">Cancel</button>
-                            <button onClick={submitFeedback} className="btn btn-primary">Submit</button>
+                            <button onClick={submitFeedback} className="btn bg-primary/70 text-white">Submit</button>
                         </div>
                     </Dialog.Panel>
                 </div>
