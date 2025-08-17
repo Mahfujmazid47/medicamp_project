@@ -6,52 +6,53 @@ import Swal from 'sweetalert2';
 import GoogleLogin from './GoogleLogin';
 
 const Login = () => {
-        const { signIn } = useAuth();
+    const { signIn } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
-    // console.log(location)
 
-    const { register,
-        handleSubmit,
-        formState: { errors }
-    } = useForm();
+    const { register, handleSubmit, formState: { errors }, setValue } = useForm();
 
     const onSubmit = data => {
-        // console.log(data);
         const { email, password } = data;
-         signIn(email, password)
-        .then(async result => {
-            const loggedUser = result.user;
+        signIn(email, password)
+            .then(async result => {
+                const loggedUser = result.user;
 
-            if (loggedUser) {
-                // ✅ Get Firebase JWT token
-                const token = await loggedUser.getIdToken();
+                if (loggedUser) {
+                    const token = await loggedUser.getIdToken();
+                    localStorage.setItem('token', token);
 
-                // ✅ Save token to localStorage
-                localStorage.setItem('token', token);
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Login Successful",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
 
-                // ✅ Show success alert
+                    navigate(location.state ? location.state : "/");
+                }
+            })
+            .catch(err => {
+                console.error(err.message);
                 Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Login Successful",
-                    showConfirmButton: false,
-                    timer: 1500
+                    icon: "error",
+                    title: "Login Failed",
+                    text: err.message
                 });
-
-                // ✅ Redirect to previous location or home
-                navigate(location.state ? location.state : "/");
-            }
-        })
-        .catch(err => {
-            console.error(err.message);
-            Swal.fire({
-                icon: "error",
-                title: "Login Failed",
-                text: err.message
             });
-        });
-    }
+    };
+
+    // 🔑 Prefill handlers
+    const fillAdmin = () => {
+        setValue("email", "mahfujmazid47@gmail.com");
+        setValue("password", "123456");
+    };
+
+    const fillDefaultUser = () => {
+        setValue("email", "no@man.com");
+        setValue("password", "123456");
+    };
 
     return (
         <div data-aos='fade-up' className='md:w-2/3 w-11/12'>
@@ -66,9 +67,7 @@ const Login = () => {
                     <form onSubmit={handleSubmit(onSubmit)} className="fieldset">
                         <label className="label">Email</label>
                         <input type="email" {...register('email', { required: true })} className="input md:w-3/4" placeholder="Email" />
-                        {
-                            errors.email?.type === 'required' && <p className='text-red-500'>Email is required.</p>
-                        }
+                        {errors.email?.type === 'required' && <p className='text-red-500'>Email is required.</p>}
 
                         <label className="label">Password</label>
                         <input type="password" {...register('password', {
@@ -76,22 +75,28 @@ const Login = () => {
                             minLength: 6
                         })}
                             className="input md:w-3/4" placeholder="Password" />
-                        {
-                            errors.password?.type === 'required' && <p className='text-red-500'>Password is required.</p>
-                        }
-                        {
-                            errors.password?.type === 'minLength' && <p className='text-red-500'>Password Must have 6 characters</p>
-                        }
+                        {errors.password?.type === 'required' && <p className='text-red-500'>Password is required.</p>}
+                        {errors.password?.type === 'minLength' && <p className='text-red-500'>Password Must have 6 characters</p>}
 
                         <div><a className="link link-hover">Forgot password?</a></div>
 
                         <input type="submit" value="Login" className='btn bg-primary/70 text-white mt-4 md:w-3/4 hover:scale-105 transition-all' />
 
-                        <p>New to this website? <Link to='/auth/register'>
+                        {/* 🔑 Prefill Buttons */}
+                        <div className="flex gap-1 mt-3 md:w-3/4">
+                            <button type="button" onClick={fillAdmin} className="btn hover:text-white bg-base-100 hover:bg-primary/70 outline-primary/70 btn-sm w-1/2">
+                               Login as Admin
+                            </button>
+                            <button type="button" onClick={fillDefaultUser} className="btn bg-base-100 hover:bg-primary/70 hover:text-white btn-sm w-1/2">
+                                Login as User
+                            </button>
+                        </div>
+
+                        <p className="mt-3">New to this website? <Link to='/auth/register'>
                             <span className='text-primary/70 font-semibold underline cursor-pointer text-sm'>Register</span>
                         </Link></p>
 
-                        <div className='md:w-3/4'>
+                        <div className='md:w-3/4 mt-2'>
                             <GoogleLogin></GoogleLogin>
                         </div>
                     </form>
