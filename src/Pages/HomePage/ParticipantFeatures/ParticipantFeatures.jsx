@@ -26,7 +26,7 @@ const features = [
 const ParticipantFeatures = () => {
     return (
         <div className='py-20'>
-            <section className="bg-primary/10 py-12 px-4 md:px-8 w-full md:w-10/12 mx-auto rounded-2xl hover:shadow-2xl transition-all duration-300 ease-in-out ">
+            <section className="bg-gradient-to-br from-primary/30 to-secondary/10 py-12 px-4 md:px-8 w-full md:w-10/12 mx-auto rounded-2xl hover:shadow-2xl transition-all duration-300 ease-in-out ">
             <div className="max-w-7xl mx-auto text-center">
                 <h2 className="text-3xl text-primary/70 md:text-4xl font-bold mb-4">What Our Participants Can Do</h2>
                 <p className=" mb-10">Empowering participants with tools to manage, track, and enjoy their healthcare experience.</p>

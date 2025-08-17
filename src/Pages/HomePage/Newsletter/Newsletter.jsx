@@ -14,7 +14,7 @@ const Newsletter = () => {
   };
 
   return (
-    <section data-aos="fade-up" className=" lg:py-44 md:py-28 py-14 pb- px-6 md:px-20 mt-12 rounded-2xl">
+    <section data-aos="fade-up" className=" lg:py-30 md:py-28 py-14 pb- px-6 md:px-20 mt-12 rounded-2xl">
       <div className="max-w-5xl mx-auto text-center">
         
         {/* Heading */}
