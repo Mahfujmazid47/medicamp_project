@@ -42,7 +42,7 @@ export default function FAQs() {
         <h2 className="text-3xl md:text-4xl font-bold text-center text-primary/70 mb-4">
           Frequently Asked Questions
         </h2>
-        <p className="text-center text-gray-600 mb-10">
+        <p className="text-center  mb-10">
           Find answers to the most common questions about MediCamp.
         </p>
 
@@ -51,21 +51,21 @@ export default function FAQs() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="border border-purple-200 rounded-2xl shadow-sm hover:shadow-md transition duration-300"
+              className="border border-primary/30 rounded-2xl shadow-sm hover:shadow-md transition duration-300"
             >
               <button
                 className="w-full text-left px-6 py-4 flex justify-between items-center focus:outline-none"
                 onClick={() => toggleFAQ(index)}
               >
-                <span className="text-lg font-semibold text-gray-800">
+                <span className="text-xl font-semibold">
                   {faq.question}
                 </span>
-                <span className="ml-2 text-purple-600">
+                <span className="ml-2 text-primary/70">
                   {openIndex === index ? "−" : "+"}
                 </span>
               </button>
               {openIndex === index && (
-                <div className="px-6 pb-4 text-gray-600 animate-fadeIn">
+                <div className="px-6 pb-4  animate-fadeIn">
                   {faq.answer}
                 </div>
               )}
