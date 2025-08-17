@@ -10,15 +10,15 @@ const AboutUs = () => {
             </p>
 
             <div className="grid md:grid-cols-3 gap-6 mt-10 text-center">
-                <div className="p-6 shadow-xl rounded-lg">
+                <div className="p-6 shadow-xl bg-base-100 rounded-lg">
                     <h3 className="text-xl font-bold mb-2">🔬 Mission</h3>
                     <p className="">To provide accessible medical care through organized and reliable camp systems.</p>
                 </div>
-                <div className="p-6 shadow-xl rounded-lg">
+                <div className="p-6 shadow-xl bg-base-100 rounded-lg">
                     <h3 className="text-xl font-bold mb-2">🌍 Vision</h3>
                     <p className="">Empowering rural and underserved communities with health services.</p>
                 </div>
-                <div className="p-6 shadow-xl rounded-lg">
+                <div className="p-6 shadow-xl bg-base-100 rounded-lg">
                     <h3 className="text-xl font-bold mb-2">🤝 Our Team</h3>
                     <p className="">Organizers, participants & healthcare professionals working together to improve lives.</p>
                 </div>

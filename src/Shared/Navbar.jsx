@@ -50,6 +50,8 @@ const Navbar = () => {
 
         <li><NavLink className='rounded-full font-bold lg:mr-2 mb-1' to="/terms">Terms & Conditions</NavLink></li>
 
+        <li><NavLink className='rounded-full font-bold lg:mr-2 mb-1' to="/privacy">Privacy Policy</NavLink></li>
+
 
         {/* {
             user && <>

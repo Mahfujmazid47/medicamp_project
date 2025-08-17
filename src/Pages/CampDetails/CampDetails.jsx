@@ -92,7 +92,14 @@ const CampDetails = () => {
         <p><strong>Participants: <span className='badge bg-primary/70 text-white'>{camp.participantCount}</span></strong></p>
         <p className="mb-4"><strong>Description:</strong> {camp.description}</p>
 
-        <button onClick={() => setIsModalOpen(true)} disabled={role === 'organizer'} className="btn bg-primary/70 text-white">{role === 'participant' ? 'Join Camp' : 'Organizer Cannot Join'}</button>
+        <div>
+          {
+            !user ?
+            <button disabled className='btn'>Login to Join</button>
+            :
+            <button onClick={() => setIsModalOpen(true)} disabled={role === 'organizer'} className="btn bg-primary/70 text-white">{role === 'participant' ? 'Join Camp' : 'Organizer Cannot Join'}</button>
+          }
+        </div>
 
         {/* Modal with Headless UI */}
         <Transition appear show={isModalOpen} as={Fragment}>

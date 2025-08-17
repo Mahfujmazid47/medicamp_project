@@ -56,7 +56,7 @@ const DashboardLayout = () => {
                 </div>
                 <div className="drawer-side ">
                     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                    <ul className="menu text-base-content min-h-full w-50 md:w-60 p-4 bg-gradient-to-r from-primary/30 to-secondary/10">
+                    <ul className="menu text-base-content min-h-full w-50 md:w-60 p-4 bg-gradient-to-r from-primary/30 to-secondary/10 backdrop-blur-xl">
                         {/* Sidebar content here */}
                         <SiteLogo></SiteLogo>
 

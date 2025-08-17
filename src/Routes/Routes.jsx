@@ -25,6 +25,7 @@ import Analytics from '../Pages/Dashboard/Participant/Analytics';
 import ManageRegisteredCamps from '../Pages/Dashboard/Organizer/ManageRegisteredCamps';
 import AboutUs from '../Pages/AboutUs/AboutUs';
 import TermsAndConditions from '../Pages/Terms/TermsAndConditions';
+import PrivacyPolicy from '../Pages/PrivacyPolicy/PrivacyPolicy';
 
 
 export const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
@@ -45,9 +46,7 @@ export const router = createBrowserRouter([
             {
                 path: "/camp-details/:campId",
                 element: (
-                    <PrivateRoute>
                         <CampDetails></CampDetails>
-                    </PrivateRoute>
                 )
             },
             {
@@ -57,6 +56,10 @@ export const router = createBrowserRouter([
             {
                 path: "/terms",
                 Component: TermsAndConditions
+            },
+            {
+                path: "/privacy",
+                Component: PrivacyPolicy
             },
         ]
     },

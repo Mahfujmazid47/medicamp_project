@@ -12,7 +12,7 @@ const AuthLayout = () => {
                 <Navbar></Navbar>
             </nav>
             
-            <div className="flex flex-col lg:flex-row mx-auto  pt-16">
+            <div className="flex flex-col lg:flex-row mx-auto bg-gradient-to-r from-primary/20 to-secondary/10 pt-16">
                 <div className='flex-1'>
                     <section className='min-h-screen flex justify-center items-center md:py-10'>
                         <Suspense fallback={<Loading />}>
