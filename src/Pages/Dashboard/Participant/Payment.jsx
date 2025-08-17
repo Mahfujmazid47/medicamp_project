@@ -83,7 +83,7 @@ const Payment = () => {
 
             <form onSubmit={handleSubmit} className="space-y-4">
                 <CardElement className="p-4 border rounded" />
-                <button type="submit" className="btn btn-primary w-full mt-2" disabled={!stripe || !clientSecret || processing}>
+                <button type="submit" className="btn bg-primary/70 text-white w-full mt-2" disabled={!stripe || !clientSecret || processing}>
                     {processing ? 'Processing...' : 'Pay Now'}
                 </button>
             </form>

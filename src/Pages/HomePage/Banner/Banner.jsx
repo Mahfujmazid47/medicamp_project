@@ -25,7 +25,7 @@ const slides = [
 
 const Banner = () => {
     return (
-        <div data-aos='zoom-in' className="mt-6 max-w-7xl mx-auto">
+        <div data-aos='zoom-in' className="pt-6 max-w-7xl mx-auto">
             <Carousel
                 autoPlay
                 infiniteLoop

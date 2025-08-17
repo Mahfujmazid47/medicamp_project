@@ -8,11 +8,11 @@ import Footer from '../Shared/Footer';
 const AuthLayout = () => {
     return (
         <>
-            <nav>
+            <nav className=''>
                 <Navbar></Navbar>
             </nav>
             
-            <div className="flex flex-col lg:flex-row mx-auto">
+            <div className="flex flex-col lg:flex-row mx-auto  pt-16">
                 <div className='flex-1'>
                     <section className='min-h-screen flex justify-center items-center md:py-10'>
                         <Suspense fallback={<Loading />}>

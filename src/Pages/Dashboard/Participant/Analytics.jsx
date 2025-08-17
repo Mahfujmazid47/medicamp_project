@@ -29,7 +29,7 @@ const Analytics = () => {
 
   return (
     <div className="p-6 w-full max-w-5xl mx-auto">
-      <h2 className="text-3xl text-primary font-bold text-center mb-6">Camp Analytics</h2>
+      <h2 className="text-3xl text-primary/70 font-bold text-center mb-6">Camp Analytics</h2>
 
       {chartData.length === 0 ? (
         <p className="text-center text-gray-500">No registered camps available for analytics.</p>

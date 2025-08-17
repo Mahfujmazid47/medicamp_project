@@ -112,7 +112,7 @@ const UpdateCamp = () => {
                 </div>
 
                 <div className="md:col-span-2 text-center">
-                    <input type="submit" value="Update Camp" className="btn btn-primary w-1/2" />
+                    <input type="submit" value="Update Camp" className="btn bg-primary/70 text-white w-1/2" />
                 </div>
             </form>
         </div>

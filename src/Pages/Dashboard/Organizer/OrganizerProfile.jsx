@@ -73,11 +73,11 @@ const OrganizerProfile = () => {
     if (isLoading) return <Loading />;
 
     return (
-        <div data-aos='zoom-out' duration='2000' className="w-11/12 md:w-6/12 min-h-[80vh] mx-auto my-16 p-8 bg-gradient-to-br from-blue-50 to-purple-100 shadow-2xl rounded-2xl border border-blue-200 flex flex-col justify-center">
-            <h2 className="text-4xl font-bold mb-10 text-center text-blue-700">My Profile</h2>
+        <div data-aos='zoom-out' duration='2000' className="w-11/12 md:w-6/12 min-h-[80vh] mx-auto my-16 p-8 bg-gradient-to-br from-primary/40 to-secondary/20 shadow-2xl rounded-2xl flex flex-col justify-center">
+            <h2 className="text-4xl font-bold mb-10 text-center text-primary/70">My Profile</h2>
 
             {!editMode ? (
-                <div className="space-y-8 text-base text-gray-800">
+                <div className="space-y-8 text-base">
                     <div className="flex flex-col items-center text-center">
                         <img
                             src={userData?.photoURL || 'https://i.ibb.co/ZYW3VTp/brown-brim.png'}
@@ -85,15 +85,15 @@ const OrganizerProfile = () => {
                             className="w-28 h-28 rounded-full border-4 border-white shadow-lg hover:scale-105 transition-transform duration-300"
                         />
                         <h3 className="text-2xl font-semibold mt-4">{userData?.name || 'N/A'}</h3>
-                        <p className="text-gray-500 mt-1">{userData?.email}</p>
-                        <p className="text-gray-600 mt-1">📞 {userData?.phone || 'N/A'}</p>
-                        <p className="text-gray-600 mt-1">🏠 {userData?.address || 'N/A'}</p>
+                        <p className=" mt-1">{userData?.email}</p>
+                        <p className=" mt-1">📞 {userData?.phone || 'N/A'}</p>
+                        <p className=" mt-1">🏠 {userData?.address || 'N/A'}</p>
                     </div>
 
                     <div className="text-center">
                         <button
                             onClick={handleEditClick}
-                            className="btn btn-primary bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg shadow-md transition-transform hover:scale-105"
+                            className="btn btn-primary bg-primary/70 border-none text-white px-8 py-3 rounded-lg shadow-md transition-transform hover:scale-105"
                         >
                             ✏️ Edit Profile
                         </button>

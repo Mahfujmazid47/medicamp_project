@@ -56,7 +56,7 @@ const Login = () => {
     return (
         <div data-aos='fade-up' className='md:w-2/3 w-11/12'>
             <div className="">
-                <h1 className="text-3xl font-extrabold">Join Us </h1>
+                <h1 className="text-3xl  text-primary/70 font-extrabold">Join Us </h1>
                 <p className="py-3">
                     Login with Medicamp
                 </p>
@@ -85,10 +85,10 @@ const Login = () => {
 
                         <div><a className="link link-hover">Forgot password?</a></div>
 
-                        <input type="submit" value="Login" className='btn bg-primary text-white mt-4 md:w-3/4 hover:scale-105 transition-all' />
+                        <input type="submit" value="Login" className='btn bg-primary/70 text-white mt-4 md:w-3/4 hover:scale-105 transition-all' />
 
                         <p>New to this website? <Link to='/auth/register'>
-                            <span className='text-blue-500 font-semibold underline cursor-pointer text-sm'>Register</span>
+                            <span className='text-primary/70 font-semibold underline cursor-pointer text-sm'>Register</span>
                         </Link></p>
 
                         <div className='md:w-3/4'>

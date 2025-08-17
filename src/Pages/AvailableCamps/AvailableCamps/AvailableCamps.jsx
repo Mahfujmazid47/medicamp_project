@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router';
 import useAxios from '../../../Hooks/useAxios';
 import Loading from '../../../Shared/Loading';
+import { FaArrowRight } from 'react-icons/fa';
 
 const AvailableCamps = () => {
   const axiosPublic = useAxios();
@@ -40,9 +41,9 @@ const AvailableCamps = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-6">
-      <h2 className="text-3xl md:text-4xl font-bold mb-10 text-primary text-center">Available Medical Camps</h2>
+      <h2 data-aos='fade-up' className="text-3xl md:text-4xl font-bold mb-10 text-primary/70 text-center">Available Medical Camps</h2>
 
-      <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+      <div data-aos='fade-up' data-aos-delay="100" className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
         <input
           type="text"
           placeholder="Search by name, date, doctor..."
@@ -72,7 +73,7 @@ const AvailableCamps = () => {
 
       <div className={`grid gap-6 ${columnCount === 3 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 md:grid-cols-2'}`}>
         {filteredAndSortedCamps.map(camp => (
-          <div data-aos='fade-up' key={camp._id} className="card bg-base-100 shadow-xl">
+          <div data-aos='fade-up' data-aos-delay="300" key={camp._id} className="card bg-base-100 shadow-xl">
             <figure><img src={camp.image} alt={camp.campName} className="h-48 w-full object-cover" /></figure>
             <div className="card-body">
               <h2 className="card-title">{camp.campName}</h2>
@@ -80,10 +81,10 @@ const AvailableCamps = () => {
               <p><strong>Date & Time:</strong> {camp.date}, {camp.time}</p>
               <p><strong>Location:</strong> {camp.location}</p>
               <p><strong>Doctor:</strong> {camp.healthcareProfessional}</p>
-              <p><strong>Participants: <span className='badge badge-primary'>{camp.participantCount}</span></strong></p>
+              <p><strong>Participants: <span className='badge text-white bg-primary/70'>{camp.participantCount}</span></strong></p>
               <p>{camp.description.slice(0, 80)}...</p>
               <div className="card-actions mt-2 justify-end">
-                <Link to={`/camp-details/${camp._id}`} className="btn hover:scale-110 transition btn-primary">Details</Link>
+                <Link to={`/camp-details/${camp._id}`} className="btn hover:scale-110 transition bg-primary/70 text-white">Details <FaArrowRight /></Link>
               </div>
             </div>
           </div>

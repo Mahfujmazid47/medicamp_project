@@ -54,7 +54,7 @@ const NoRegisteredCamps = () => {
             - onClick: Placeholder for navigation to an "Add Camp" route (e.g., using React Router)
           */}
           <button
-            className="btn btn-primary btn-wide btn-lg rounded-full"
+            className="btn bg-primary/70 text-white btn-wide btn-lg rounded-full"
             onClick={() => navigate('/available-camps')} // Replace with actual navigation
           >
             See All Camps <FaArrowRight />

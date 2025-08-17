@@ -75,7 +75,7 @@ const Registration = () => {
     return (
         <div data-aos='fade-up' className='md:w-2/3 w-11/12'>
             <div className="">
-                <h1 className="text-3xl font-extrabold">Create an Account</h1>
+                <h1 className="text-3xl text-primary/70 font-extrabold">Create an Account</h1>
                 <p className="py-3">
                     Register with MediCamp
                 </p>
@@ -121,10 +121,10 @@ const Registration = () => {
 
                         <div><a className="link link-hover">Forgot password?</a></div>
 
-                        <input type="submit" value="Register" className='btn btn-primary text-white hover:scale-105 transition-all mt-4 md:w-3/4' />
+                        <input type="submit" value="Register" className='btn bg-primary/70 text-white hover:scale-105 transition-all mt-4 md:w-3/4' />
 
                         <p>Already have an account? <Link to='/auth/login'>
-                            <span className='text-primary font-semibold underline cursor-pointer text-sm'>Login</span>
+                            <span className='text-primary/70 font-semibold underline cursor-pointer text-sm'>Login</span>
                         </Link></p>
 
                         <div className='md:w-3/4'>

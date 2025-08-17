@@ -19,13 +19,13 @@ const DashboardLayout = () => {
     }
     return (
         <div>
-            <div className="drawer lg:drawer-open">
+            <div className="drawer lg:drawer-open bg-gradient-to-br from-primary/20 to-secondary/10">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col">
 
                     {/* Navbar */}
-                    <div className="navbar bg-base-300 w-full lg:hidden">
-                        <div className="flex-none lg:hidden">
+                    <div className="navbar bg-base-300 w-full lg:hidden ">
+                        <div className="flex-none lg:hidden ">
                             <label htmlFor="my-drawer-2" aria-label="open sidebar" className="btn btn-square btn-ghost">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -54,9 +54,9 @@ const DashboardLayout = () => {
                     {/* Page content here */}
 
                 </div>
-                <div className="drawer-side">
+                <div className="drawer-side ">
                     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                    <ul className="menu bg-base-200 text-base-content min-h-full w-50 md:w-60 p-4">
+                    <ul className="menu text-base-content min-h-full w-50 md:w-60 p-4 bg-gradient-to-r from-primary/30 to-secondary/10">
                         {/* Sidebar content here */}
                         <SiteLogo></SiteLogo>
 
@@ -126,6 +126,37 @@ const DashboardLayout = () => {
                                 </li>
                             </>
                         }
+
+
+                        <label className="flex cursor-pointer gap-2 mt-3 lg:pl-2 ">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round">
+                                <circle cx="12" cy="12" r="5" />
+                                <path
+                                    d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+                            </svg>
+                            <input type="checkbox" value="dark" className="toggle theme-controller text-sm" />
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </label>
 
 
 

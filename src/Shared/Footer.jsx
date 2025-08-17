@@ -9,8 +9,8 @@ const Footer = () => {
         window.location.reload();
     }
     return (
-        <div className='mt-14'>
-            <footer className="footer footer-horizontal footer-center bg-primary text-white p-10 rounded-t-2xl">
+        <div className=''>
+            <footer className="footer footer-horizontal footer-center bg-gradient-to-br from-primary/70 to-secondary/40 text-white p-10">
                 <aside>
                     <div>
                         <NavLink onClick={handleReload} to='/'>

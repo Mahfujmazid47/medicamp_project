@@ -81,7 +81,7 @@ const ManageRegisteredCamps = () => {
 
   return (
     <div data-aos='fade-up' className="p-4 w-full max-w-7xl mx-auto">
-      <h2 className="text-3xl text-primary font-bold mb-4 text-center">Manage Registered Camps</h2>
+      <h2 className="text-3xl text-primary/70 font-bold mb-4 text-center">Manage Registered Camps</h2>
 
       <div className="flex justify-end mb-4">
         <input
@@ -96,7 +96,7 @@ const ManageRegisteredCamps = () => {
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
           <thead>
-            <tr className="bg-blue-100">
+            <tr className="bg-primary/30">
               <th>#</th>
               <th>Camp Name</th>
               <th>Camp Fees</th>
@@ -121,13 +121,13 @@ const ManageRegisteredCamps = () => {
                     <span className="text-green-600 font-semibold">Confirmed</span>
                   ) : camp.payment_status === 'paid' ? (
                     <button
-                      className="btn btn-xs btn-primary"
+                      className="btn btn-xs bg-primary/70 text-white"
                       onClick={() => confirmStatusMutation.mutate(camp._id)}
                     >
                       Pending
                     </button>
                   ) : (
-                    <span className="text-gray-500">Pending</span>
+                    <span className="">Pending</span>
                   )}
                 </td>
                 <td>
@@ -150,7 +150,7 @@ const ManageRegisteredCamps = () => {
           <button
             key={i}
             onClick={() => setCurrentPage(i + 1)}
-            className={`btn btn-sm ${currentPage === i + 1 ? 'btn-primary' : 'btn-outline'}`}
+            className={`btn btn-sm ${currentPage === i + 1 ? 'btn bg-primary/70 text-white' : 'btn-outline outline-primary/70'}`}
           >
             {i + 1}
           </button>

@@ -25,7 +25,7 @@ const PopularCamps = () => {
 
     return (
         <section className="my-12 md:my-24 px-4 md:px-8 max-w-7xl mx-auto">
-            <h2 data-aos='fade-up' duration='3000' className="text-3xl md:text-5xl font-bold text-center mb-8 md:mb-14 text-primary">Popular Medical Camps</h2>
+            <h2 data-aos='fade-up' duration='3000' className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-14 text-primary">Popular Medical Camps</h2>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {popularCamps.map((camp) => (

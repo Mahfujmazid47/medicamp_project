@@ -37,8 +37,8 @@ const AddCamp = () => {
   };
 
   return (
-    <div data-aos='zoom-out' duration='2000' className="max-w-4xl mx-auto p-6 bg-white rounded-lg mt-8 bg-gradient-to-br from-blue-50 to-purple-100 shadow-2xl border border-blue-200">
-      <h2 className="text-2xl font-bold mb-6 text-center text-blue-700">Add a New Camp</h2>
+    <div data-aos='zoom-out' duration='2000' className="max-w-4xl mx-auto p-6 rounded-lg mt-8 bg-gradient-to-br from-primary/40 to-secondary/20 shadow-2xl">
+      <h2 className="text-3xl font-bold mb-6 text-center text-primary/70">Add a New Camp</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
         <div>
@@ -90,7 +90,7 @@ const AddCamp = () => {
         </div>
 
         <div className="md:col-span-2 text-center">
-          <input type="submit" value="Add Camp" className="btn btn-primary w-1/2" />
+          <input type="submit" value="Add Camp" className="btn border-none text-white bg-primary/70 w-1/2" />
         </div>
       </form>
     </div>

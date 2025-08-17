@@ -18,10 +18,10 @@ const ContactUs = () => {
                     <label className="block font-semibold mb-1">Message</label>
                     <textarea placeholder="Your message..." className="textarea textarea-bordered w-full h-32"></textarea>
                 </div>
-                <button type="submit" className="btn btn-primary w-full">Send Message</button>
+                <button type="submit" className="btn bg-primary/70 w-full">Send Message</button>
             </form>
 
-            <div className="text-center mt-8 text-gray-600">
+            <div className="text-center mt-8">
                 <p>📧 Email: support@medicamp.com</p>
                 <p>📞 Phone: +8801XXXXXXXXX</p>
             </div>

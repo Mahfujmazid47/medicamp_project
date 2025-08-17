@@ -7,10 +7,12 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: #6495ED;
-  --color-secondary: #ADD8E6;
-  --color-primary-content: #fff;
-  --color-secondary-content: #EBFFD8;
+  /* --color-primary: #064232;
+  --color-secondary: #568F87;
+  --color-primary-content: #DDF6D2;
+  --color-secondary-content: #ECFAE5;
+  --color-navbarBg: #F8FAFC;
+  --color-pageBg: #F1F5F9; */
 }
 
 .font-urbanist {
@@ -21,6 +23,6 @@
 }
 
 a.active {
-  @apply bg-primary transition-all scale-105 text-white
+  @apply bg-primary/70 transition-all scale-105 text-white
 }
 

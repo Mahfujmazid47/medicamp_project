@@ -23,6 +23,8 @@ import { Elements } from '@stripe/react-stripe-js';
 import PaymentHistory from '../Pages/Dashboard/Participant/PaymentHistory';
 import Analytics from '../Pages/Dashboard/Participant/Analytics';
 import ManageRegisteredCamps from '../Pages/Dashboard/Organizer/ManageRegisteredCamps';
+import AboutUs from '../Pages/AboutUs/AboutUs';
+import TermsAndConditions from '../Pages/Terms/TermsAndConditions';
 
 
 export const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
@@ -47,6 +49,14 @@ export const router = createBrowserRouter([
                         <CampDetails></CampDetails>
                     </PrivateRoute>
                 )
+            },
+            {
+                path: "/about",
+                Component: AboutUs
+            },
+            {
+                path: "/terms",
+                Component: TermsAndConditions
             },
         ]
     },
