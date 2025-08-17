@@ -78,9 +78,9 @@ const AvailableCamps = () => {
       </div>
 
       {/* Camps List */}
-      <div data-aos='fade-up' data-aos-delay="300" className={`grid gap-6 ${columnCount === 3 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 md:grid-cols-2'}`}>
+      <div className={`grid gap-6 ${columnCount === 3 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 md:grid-cols-2'}`}>
         {filteredAndSortedCamps.map(camp => (
-          <div data-aos='fade-up' key={camp._id} className="card bg-base-100 shadow-xl">
+          <div key={camp._id} className="card bg-base-100 shadow-xl">
             <figure>
               <img src={camp.image} alt={camp.campName} className="h-48 w-full object-cover" />
             </figure>
