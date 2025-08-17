@@ -71,18 +71,18 @@ const AvailableCamps = () => {
         </button>
       </div>
 
-      <div className={`grid gap-6 ${columnCount === 3 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 md:grid-cols-2'}`}>
+      <div data-aos='fade-up' data-aos-delay="300" className={`grid gap-6 ${columnCount === 3 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 md:grid-cols-2'}`}>
         {filteredAndSortedCamps.map(camp => (
-          <div data-aos='fade-up' data-aos-delay="300" key={camp._id} className="card bg-base-100 shadow-xl">
+          <div data-aos='fade-up' key={camp._id} className="card bg-base-100 shadow-xl">
             <figure><img src={camp.image} alt={camp.campName} className="h-48 w-full object-cover" /></figure>
             <div className="card-body">
               <h2 className="card-title">{camp.campName}</h2>
-              <p><strong>Fees:</strong> ${camp.fees}</p>
+              {/* <p><strong>Fees:</strong> ${camp.fees}</p> */}
               <p><strong>Date & Time:</strong> {camp.date}, {camp.time}</p>
               <p><strong>Location:</strong> {camp.location}</p>
-              <p><strong>Doctor:</strong> {camp.healthcareProfessional}</p>
+              {/* <p><strong>Doctor:</strong> {camp.healthcareProfessional}</p> */}
               <p><strong>Participants: <span className='badge text-white bg-primary/70'>{camp.participantCount}</span></strong></p>
-              <p>{camp.description.slice(0, 80)}...</p>
+              {/* <p>{camp.description.slice(0, 80)}...</p> */}
               <div className="card-actions mt-2 justify-end">
                 <Link to={`/camp-details/${camp._id}`} className="btn hover:scale-110 transition bg-primary/70 text-white">Details <FaArrowRight /></Link>
               </div>
