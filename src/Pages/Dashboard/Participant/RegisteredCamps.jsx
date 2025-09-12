@@ -222,7 +222,7 @@ const RegisteredCamps = () => {
             {/* Feedback Modal */}
             <Dialog open={isFeedbackOpen} onClose={() => setIsFeedbackOpen(false)} className="fixed z-50 inset-0 overflow-y-auto">
                 <div className="flex items-center justify-center min-h-screen">
-                    <Dialog.Panel className="bg-white rounded-lg p-6 shadow-xl w-full max-w-md">
+                    <Dialog.Panel className="bg-base-100 rounded-lg p-6 shadow-xl w-full max-w-md">
                         <Dialog.Title className="text-xl font-semibold mb-4">Leave Feedback for {selectedCamp?.campName}</Dialog.Title>
                         <textarea
                             className="textarea textarea-bordered w-full mb-4"
