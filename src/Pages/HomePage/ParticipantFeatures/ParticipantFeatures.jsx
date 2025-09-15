@@ -37,20 +37,19 @@ const ParticipantFeatures = () => {
                         src="https://i.postimg.cc/mrDVZmPj/biopharmacology-products-abstract-concept-vector-illustration-107173-29450-removebg-preview.png" alt="" />
                 </figure>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div data-aos="fade-up" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                     {features.map((feature, idx) => (
                         <div
                             key={idx}
-                            data-aos="fade-up"
                             // whileHover={{ scale: 1.05 }}
                             // whileInView={{ opacity: 1, y: 0 }}
                             // initial={{ opacity: 0, y: 30 }}
                             // transition={{ duration: 0.4 }}
-                            className="bg-base-100 rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:scale-105 transition-all duration-300 ease-in-out hover:shadow-2xl"
+                            className="bg-base-100 rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:scale-103 transition-all duration-200 ease-in-out hover:shadow-2xl"
                         >
                             {feature.icon}
                             <h3 className="text-lg font-semibold mt-4 mb-2">{feature.title}</h3>
-                            <p className="text-sm text-gray-500">{feature.description}</p>
+                            <p className="text-sm">{feature.description}</p>
                         </div>
                     ))}
                 </div>
