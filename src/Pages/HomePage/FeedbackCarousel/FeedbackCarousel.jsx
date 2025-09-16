@@ -33,7 +33,7 @@ const FeedbackCarousel = () => {
         dynamicHeight={false}
       >
         {feedbacks.map((fb) => (
-          <div data-aos="fade-up" key={fb._id} className="flex flex-col items-center gap-4 bg-gradient-to-br from-primary/50 to-secondary/20 text-white p-6 rounded-2xl">
+          <div data-aos="fade-up" key={fb._id} className="flex flex-col items-center gap-4 bg-gradient-to-br from-primary/50 to-secondary/40 text-white p-6 rounded-2xl">
             <img
               src={fb.participantPhoto}
               alt={fb.participantName}
