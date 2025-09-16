@@ -80,7 +80,7 @@ const Login = () => {
 
                         <div><a className="link link-hover">Forgot password?</a></div>
 
-                        <input type="submit" value="Login" className='btn bg-primary/70 text-white mt-4 md:w-3/4 hover:scale-105 transition-all' />
+                        <input type="submit" value="Login" className='btn  mt-4 md:w-3/4 text-white bg-primary/70 font-semibold rounded border-none shadow-md hover:bg-primary/90 hover:scale-103 transition-transform duration-300 cursor-pointer' />
 
                         {/* 🔑 Prefill Buttons */}
                         <div className="flex gap-1 mt-3 md:w-3/4">
