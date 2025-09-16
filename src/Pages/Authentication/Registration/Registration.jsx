@@ -121,7 +121,7 @@ const Registration = () => {
 
                         <div><a className="link link-hover">Forgot password?</a></div>
 
-                        <input type="submit" value="Register" className='btn bg-primary/70 text-white hover:scale-105 transition-all mt-4 md:w-3/4' />
+                        <input type="submit" value="Register" className='btn text-white bg-primary/70 font-semibold rounded shadow-md hover:bg-primary/90 transition-transform duration-300 cursor-pointer hover:scale-103 border-none mt-4 md:w-3/4' />
 
                         <p>Already have an account? <Link to='/auth/login'>
                             <span className='text-primary/70 font-semibold underline cursor-pointer text-sm'>Login</span>
