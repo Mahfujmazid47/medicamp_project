@@ -83,10 +83,10 @@ const ManageRegisteredCamps = () => {
     <div data-aos='fade-up' className="p-4 w-full max-w-7xl mx-auto">
       <h2 className="text-3xl text-primary/70 font-bold mb-4 text-center">Manage Registered Camps</h2>
 
-      <div className="flex justify-end mb-4">
+      <div className="flex justify-center mb-4">
         <input
           type="text"
-          className="input input-sm"
+          className="input input-bordered w-full md:w-1/2"
           placeholder="Search by Camp or Participant"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
