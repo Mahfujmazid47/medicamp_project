@@ -93,7 +93,7 @@ const OrganizerProfile = () => {
                     <div className="text-center">
                         <button
                             onClick={handleEditClick}
-                            className="btn btn-primary bg-primary/70 border-none text-white px-8 py-3 rounded-lg shadow-md transition-transform hover:scale-105"
+                            className="btn  border-none  px-8 py-3 text-white bg-primary/70 font-semibold rounded-lg shadow-md hover:bg-primary/90 transition-transform duration-300 cursor-pointer hover:scale-105"
                         >
                             ✏️ Edit Profile
                         </button>
