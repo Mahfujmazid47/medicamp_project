@@ -23,7 +23,7 @@ const DiscountSection = () => {
 
                 {/* CTA */}
                 <Link to="/available-camps">
-                    <button className="btn bg-primary/70 text-white border-none hover:scale-105 transition px-6">
+                    <button className="btn text-white bg-primary/70 font-semibold rounded-lg shadow-md hover:bg-primary/90 hover:scale-105 border-none transition-transform duration-300 cursor-pointer px-6">
                         Book Now
                     </button>
                 </Link>
