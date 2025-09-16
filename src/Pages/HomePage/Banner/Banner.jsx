@@ -31,7 +31,7 @@ const Banner = () => {
                 {/* CTA Buttons */}
                 <div data-aos='fade-up' data-aos-delay='200' className="flex gap-4">
                     <Link to='/available-camps'>
-                    <button className="btn text-white bg-primary/70 font-semibold rounded-lg shadow-md hover:bg-primary/90 hover:-translate-y-1 transition-transform duration-300 cursor-pointer border-none">
+                    <button className="btn text-white bg-primary/70 font-semibold rounded-lg shadow-md hover:bg-primary/90 hover:-translate-y-1 transition-transform duration-300 cursor-pointer border-none md:text-lg">
                         Explore Camps
                     </button>
                     </Link>

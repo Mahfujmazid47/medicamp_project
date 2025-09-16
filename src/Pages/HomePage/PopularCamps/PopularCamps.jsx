@@ -27,9 +27,9 @@ const PopularCamps = () => {
         <section className="my-12 md:my-24 px-4 md:px-8 max-w-7xl mx-auto">
             <h2 data-aos='fade-up' duration='3000' className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-14 text-primary/70">Popular Medical Camps</h2>
 
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div  data-aos='fade-up' className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {popularCamps.map((camp) => (
-                    <div data-aos='fade-up' duration='3000' key={camp._id} className="rounded-xl shadow-lg overflow-hidden  transition duration-300 bg-base-100 ">
+                    <div duration='3000' key={camp._id} className="rounded-xl shadow-lg overflow-hidden  transition duration-300 bg-base-100 hover:shadow-2xl">
                         <img src={camp.image} alt={camp.campName} className="w-full h-48 object-cover" />
                         <div className="p-4 space-y-1">
                             <h3 className="text-xl font-semibold mb-2">{camp.campName}</h3>
@@ -40,7 +40,7 @@ const PopularCamps = () => {
                             <p><strong>Participants: <span className='badge bg-primary/70 text-white'>{camp.participantCount}</span></strong></p>
 
                             <Link className='flex items-end justify-end' to={`/camp-details/${camp._id}`}>
-                                <button className="btn hover:scale-110 transition bg-primary/70 text-white mt-3">Details <FaArrowRight /></button>
+                                <button className="btn text-white bg-primary/70 font-semibold rounded-lg shadow-md hover:bg-primary/90 hover:-translate-y-1 transition-transform duration-300 cursor-pointer mt-3">Details <FaArrowRight /></button>
                             </Link>
                         </div>
 
@@ -50,7 +50,7 @@ const PopularCamps = () => {
 
             <div data-aos="fade-up" className="flex justify-center mt-8">
                 <Link to="/available-camps">
-                    <button  className="btn bg-primary/70 text-white hover:scale-110 transition px-6">See All Camps <FaArrowRight /></button>
+                    <button  className="btn text-white bg-primary/70 font-semibold rounded-lg shadow-md hover:bg-primary/90 hover:scale-104 transition-transform duration-300 cursor-pointer px-6">See All Camps <FaArrowRight /></button>
                 </Link>
             </div>
         </section>
