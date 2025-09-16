@@ -133,9 +133,9 @@ const Navbar = () => {
 
                                     <li className='font-bold mx-auto text-lg'>{user.displayName}</li>
 
-                                    <li><NavLink to='/dashboard/profile' className="btn hover:scale-103 transition p-2 md:p-4 text-white bg-primary/70">Dashboard</NavLink></li>
+                                    <li><NavLink to='/dashboard/profile' className="btn hover:scale-103 p-2 md:p-4 text-white bg-primary/70 font-semibold rounded shadow-md hover:bg-primary/90 transition-transform duration-300 cursor-pointer">Dashboard</NavLink></li>
 
-                                    <li><button onClick={handleLogout} className="btn hover:scale-103 transition bg-primary/70 border-2 p-2 md:p-4 text-white">Logout</button></li>
+                                    <li><button onClick={handleLogout} className="btn hover:scale-103 p-2 md:p-4 text-white bg-primary/70 font-semibold rounded shadow-md hover:bg-primary/90 transition-transform duration-300 cursor-pointer">Logout</button></li>
                                 </ul>
                             </div>
                         </>
