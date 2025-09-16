@@ -1,9 +1,11 @@
 import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router';
+import useAuth from '../../../Hooks/useAuth';
 
 
 const Banner = () => {
+    const { user } = useAuth();
     return (
         <div className="relative h-[100vh] flex items-center justify-center bg-gray-900">
             {/* Background Image */}
@@ -31,16 +33,24 @@ const Banner = () => {
                 {/* CTA Buttons */}
                 <div data-aos='fade-up' data-aos-delay='200' className="flex gap-4">
                     <Link to='/available-camps'>
-                    <button className="btn text-white bg-primary/70 font-semibold rounded-lg shadow-md hover:bg-primary/90 hover:-translate-y-1 transition-transform duration-300 cursor-pointer border-none md:text-lg">
-                        Explore Camps
-                    </button>
+                        <button className="btn text-white bg-primary/70 font-semibold rounded-lg shadow-md hover:bg-primary/90 hover:-translate-y-1 transition-transform duration-300 cursor-pointer border-none md:text-lg">
+                            Explore Camps
+                        </button>
                     </Link>
 
-                    <Link to='/auth/register'>
+                    {user ? 
+
+                    <Link to='/dashboard/profile'>
+                        <button className="bg-white hover:shadow-xl hover:-translate-y-1 font-semibold transition-all duration-300 text-primary/70 hover:bg-gray-100 btn rounded-lg md:text-lg shadow-lg cursor-pointer">
+                            Go to Dashboard <FaArrowRight />
+                        </button>
+                    </Link>
+                    
+                    : <Link to='/auth/register'>
                         <button className="bg-white hover:shadow-xl hover:-translate-y-1 font-semibold transition-all duration-300 text-primary/70 hover:bg-gray-100 btn rounded-lg md:text-lg shadow-lg cursor-pointer">
                             Join Us <FaArrowRight />
                         </button>
-                    </Link>
+                    </Link>}
                 </div>
             </div>
         </div>
